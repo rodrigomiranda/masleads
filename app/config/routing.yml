@@ -1,3 +1,7 @@
+TipddyApiBundle:
+    resource: "@TipddyApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 TipddyMasleadsBundle:
     resource: "@TipddyMasleadsBundle/Resources/config/routing.yml"
     prefix:   /
