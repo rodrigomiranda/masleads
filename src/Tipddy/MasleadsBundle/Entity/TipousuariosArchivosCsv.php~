@@ -1,0 +1,59 @@
+<?php
+
+namespace Tipddy\MasleadsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipddy\MasleadsBundle\Entity\TipousuariosArchivosCsv
+ *
+ * @ORM\Table(name="tipousuarios_archivos_csv")
+ * @ORM\Entity
+ */
+class TipousuariosArchivosCsv
+{
+    /**
+     * @var bigint $id
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $nombre
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var datetime $fechaSubida
+     *
+     * @ORM\Column(name="fecha_subida", type="datetime", nullable=false)
+     */
+    private $fechaSubida;
+
+    /**
+     * @var TiposUsuarios
+     *
+     * @ORM\ManyToOne(targetEntity="TiposUsuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $tipoUsuario;
+
+    /**
+     * @var Organizaciones
+     *
+     * @ORM\ManyToOne(targetEntity="Organizaciones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="organizacion_id", referencedColumnName="id")
+     * })
+     */
+    private $organizacion;
+
+
+}

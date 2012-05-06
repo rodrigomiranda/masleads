@@ -1,0 +1,45 @@
+<?php
+
+namespace Tipddy\MasleadsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipddy\MasleadsBundle\Entity\CampanasGerentes
+ *
+ * @ORM\Table(name="campanas_gerentes")
+ * @ORM\Entity
+ */
+class CampanasGerentes
+{
+    /**
+     * @var bigint $id
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var Campanas
+     *
+     * @ORM\ManyToOne(targetEntity="Campanas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="campana_id", referencedColumnName="id")
+     * })
+     */
+    private $campana;
+
+    /**
+     * @var Usuarios
+     *
+     * @ORM\ManyToOne(targetEntity="Usuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+
+}

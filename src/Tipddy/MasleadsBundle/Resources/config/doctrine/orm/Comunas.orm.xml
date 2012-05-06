@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Comunas" table="comunas">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="comunaId" type="bigint" column="comuna_id"/>
+    <field name="comuna" type="string" column="comuna" length="250"/>
+    <many-to-one field="region" target-entity="Regiones" orphan-removal="">
+      <join-columns>
+        <join-column name="region_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="provincia" target-entity="Comunas" orphan-removal="">
+      <join-columns>
+        <join-column name="provincia_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,76 @@
+<?php
+
+namespace Tipddy\MasleadsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipddy\MasleadsBundle\Entity\Empresas
+ *
+ * @ORM\Table(name="empresas")
+ * @ORM\Entity
+ */
+class Empresas
+{
+    /**
+     * @var bigint $id
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $etiqueta
+     *
+     * @ORM\Column(name="etiqueta", type="string", length=255, nullable=false)
+     */
+    private $etiqueta;
+
+    /**
+     * @var string $rut
+     *
+     * @ORM\Column(name="rut", type="string", length=12, nullable=false)
+     */
+    private $rut;
+
+    /**
+     * @var string $direccion
+     *
+     * @ORM\Column(name="direccion", type="string", length=255, nullable=false)
+     */
+    private $direccion;
+
+    /**
+     * @var Regiones
+     *
+     * @ORM\ManyToOne(targetEntity="Regiones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="region", referencedColumnName="id")
+     * })
+     */
+    private $region;
+
+    /**
+     * @var Provincias
+     *
+     * @ORM\ManyToOne(targetEntity="Provincias")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
+     * })
+     */
+    private $provincia;
+
+    /**
+     * @var Organizaciones
+     *
+     * @ORM\ManyToOne(targetEntity="Organizaciones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="organizacion_id", referencedColumnName="id")
+     * })
+     */
+    private $organizacion;
+
+
+}

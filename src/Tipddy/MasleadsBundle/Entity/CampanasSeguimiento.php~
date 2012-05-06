@@ -1,0 +1,126 @@
+<?php
+
+namespace Tipddy\MasleadsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipddy\MasleadsBundle\Entity\CampanasSeguimiento
+ *
+ * @ORM\Table(name="campanas_seguimiento")
+ * @ORM\Entity
+ */
+class CampanasSeguimiento
+{
+    /**
+     * @var bigint $id
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $timestamp
+     *
+     * @ORM\Column(name="timestamp", type="string", length=50, nullable=true)
+     */
+    private $timestamp;
+
+    /**
+     * @var datetime $fechaHora
+     *
+     * @ORM\Column(name="fecha_hora", type="datetime", nullable=false)
+     */
+    private $fechaHora;
+
+    /**
+     * @var string $ip
+     *
+     * @ORM\Column(name="ip", type="string", length=50, nullable=true)
+     */
+    private $ip;
+
+    /**
+     * @var string $hostname
+     *
+     * @ORM\Column(name="hostname", type="string", length=150, nullable=true)
+     */
+    private $hostname;
+
+    /**
+     * @var text $urlVisitado
+     *
+     * @ORM\Column(name="url_visitado", type="text", nullable=true)
+     */
+    private $urlVisitado;
+
+    /**
+     * @var string $agente
+     *
+     * @ORM\Column(name="agente", type="string", length=255, nullable=true)
+     */
+    private $agente;
+
+    /**
+     * @var text $referencia
+     *
+     * @ORM\Column(name="referencia", type="text", nullable=true)
+     */
+    private $referencia;
+
+    /**
+     * @var string $os
+     *
+     * @ORM\Column(name="os", type="string", length=15, nullable=true)
+     */
+    private $os;
+
+    /**
+     * @var string $browser
+     *
+     * @ORM\Column(name="browser", type="string", length=50, nullable=true)
+     */
+    private $browser;
+
+    /**
+     * @var string $lenguaje
+     *
+     * @ORM\Column(name="lenguaje", type="string", length=5, nullable=true)
+     */
+    private $lenguaje;
+
+    /**
+     * @var string $screen
+     *
+     * @ORM\Column(name="screen", type="string", length=15, nullable=true)
+     */
+    private $screen;
+
+    /**
+     * @var string $codigoAvisoVendedor
+     *
+     * @ORM\Column(name="codigo_aviso_vendedor", type="string", length=100, nullable=true)
+     */
+    private $codigoAvisoVendedor;
+
+    /**
+     * @var string $usuarioUrl
+     *
+     * @ORM\Column(name="usuario_url", type="string", length=100, nullable=true)
+     */
+    private $usuarioUrl;
+
+    /**
+     * @var Campanas
+     *
+     * @ORM\ManyToOne(targetEntity="Campanas")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="campana_id", referencedColumnName="id")
+     * })
+     */
+    private $campana;
+
+
+}

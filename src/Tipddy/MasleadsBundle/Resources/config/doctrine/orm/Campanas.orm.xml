@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Campanas" table="campanas">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="etiqueta" type="string" column="etiqueta" length="255"/>
+    <field name="fechaInicio" type="date" column="fecha_inicio"/>
+    <field name="fechaTermino" type="date" column="fecha_termino"/>
+    <field name="periodoPrueba" type="boolean" column="periodo_prueba"/>
+    <field name="fechaInicioPrueba" type="date" column="fecha_inicio_prueba"/>
+    <field name="fechaTerminoPrueba" type="date" column="fecha_termino_prueba"/>
+    <field name="sitioWeb" type="string" column="sitio_web" length="255"/>
+    <field name="apiKey" type="string" column="api_key" length="255"/>
+    <many-to-one field="organizacion" target-entity="Organizaciones" orphan-removal="">
+      <join-columns>
+        <join-column name="organizacion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="industria" target-entity="TiposIndustrias" orphan-removal="">
+      <join-columns>
+        <join-column name="industria" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

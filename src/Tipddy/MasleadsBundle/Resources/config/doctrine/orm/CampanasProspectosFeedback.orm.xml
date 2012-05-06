@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CampanasProspectosFeedback" table="campanas_prospectos_feedback">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="montoOportunidad" type="bigint" column="monto_oportunidad"/>
+    <field name="notaVenta" type="text" column="nota_venta"/>
+    <field name="timestamp" type="string" column="timestamp" length="50"/>
+    <many-to-one field="campanaProspecto" target-entity="CampanasProspectos" orphan-removal="">
+      <join-columns>
+        <join-column name="campana_prospecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoRespuesta" target-entity="TiposRespuestas" orphan-removal="">
+      <join-columns>
+        <join-column name="tipo_respuesta_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="campanaVendedor" target-entity="CampanasVendedores" orphan-removal="">
+      <join-columns>
+        <join-column name="campana_vendedor_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="campana" target-entity="Campanas" orphan-removal="">
+      <join-columns>
+        <join-column name="campana_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

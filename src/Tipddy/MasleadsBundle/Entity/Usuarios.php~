@@ -1,0 +1,191 @@
+<?php
+
+namespace Tipddy\MasleadsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tipddy\MasleadsBundle\Entity\Usuarios
+ *
+ * @ORM\Table(name="usuarios")
+ * @ORM\Entity
+ */
+class Usuarios
+{
+    /**
+     * @var bigint $id
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string $nombre
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string $apellido
+     *
+     * @ORM\Column(name="apellido", type="string", length=255, nullable=false)
+     */
+    private $apellido;
+
+    /**
+     * @var string $usuarioUrl
+     *
+     * @ORM\Column(name="usuario_url", type="string", length=100, nullable=true)
+     */
+    private $usuarioUrl;
+
+    /**
+     * @var string $login
+     *
+     * @ORM\Column(name="login", type="string", length=50, nullable=true)
+     */
+    private $login;
+
+    /**
+     * @var string $password
+     *
+     * @ORM\Column(name="password", type="string", length=50, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string $rut
+     *
+     * @ORM\Column(name="rut", type="string", length=12, nullable=true)
+     */
+    private $rut;
+
+    /**
+     * @var string $cargo
+     *
+     * @ORM\Column(name="cargo", type="string", length=255, nullable=true)
+     */
+    private $cargo;
+
+    /**
+     * @var string $profesion
+     *
+     * @ORM\Column(name="profesion", type="string", length=255, nullable=true)
+     */
+    private $profesion;
+
+    /**
+     * @var text $especialidades
+     *
+     * @ORM\Column(name="especialidades", type="text", nullable=true)
+     */
+    private $especialidades;
+
+    /**
+     * @var string $email
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string $email2
+     *
+     * @ORM\Column(name="email2", type="string", length=255, nullable=true)
+     */
+    private $email2;
+
+    /**
+     * @var string $codigoPostal
+     *
+     * @ORM\Column(name="codigo_postal", type="string", length=50, nullable=true)
+     */
+    private $codigoPostal;
+
+    /**
+     * @var string $direccion
+     *
+     * @ORM\Column(name="direccion", type="string", length=255, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var string $telefono
+     *
+     * @ORM\Column(name="telefono", type="string", length=30, nullable=true)
+     */
+    private $telefono;
+
+    /**
+     * @var string $telefono2
+     *
+     * @ORM\Column(name="telefono2", type="string", length=30, nullable=true)
+     */
+    private $telefono2;
+
+    /**
+     * @var string $celular
+     *
+     * @ORM\Column(name="celular", type="string", length=30, nullable=true)
+     */
+    private $celular;
+
+    /**
+     * @var string $empresa
+     *
+     * @ORM\Column(name="empresa", type="string", length=255, nullable=false)
+     */
+    private $empresa;
+
+    /**
+     * @var string $paginaWeb
+     *
+     * @ORM\Column(name="pagina_web", type="string", length=255, nullable=true)
+     */
+    private $paginaWeb;
+
+    /**
+     * @var TiposUsuarios
+     *
+     * @ORM\ManyToOne(targetEntity="TiposUsuarios")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tipo_usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $tipoUsuario;
+
+    /**
+     * @var Provincias
+     *
+     * @ORM\ManyToOne(targetEntity="Provincias")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
+     * })
+     */
+    private $provincia;
+
+    /**
+     * @var Regiones
+     *
+     * @ORM\ManyToOne(targetEntity="Regiones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="region", referencedColumnName="id")
+     * })
+     */
+    private $region;
+
+    /**
+     * @var Organizaciones
+     *
+     * @ORM\ManyToOne(targetEntity="Organizaciones")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="organizacion_id", referencedColumnName="id")
+     * })
+     */
+    private $organizacion;
+
+
+}

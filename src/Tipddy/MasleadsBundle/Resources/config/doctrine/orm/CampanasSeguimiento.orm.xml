@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CampanasSeguimiento" table="campanas_seguimiento">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="timestamp" type="string" column="timestamp" length="50"/>
+    <field name="fechaHora" type="datetime" column="fecha_hora"/>
+    <field name="ip" type="string" column="ip" length="50"/>
+    <field name="hostname" type="string" column="hostname" length="150"/>
+    <field name="urlVisitado" type="text" column="url_visitado"/>
+    <field name="agente" type="string" column="agente" length="255"/>
+    <field name="referencia" type="text" column="referencia"/>
+    <field name="os" type="string" column="os" length="15"/>
+    <field name="browser" type="string" column="browser" length="50"/>
+    <field name="lenguaje" type="string" column="lenguaje" length="5"/>
+    <field name="screen" type="string" column="screen" length="15"/>
+    <field name="codigoAvisoVendedor" type="string" column="codigo_aviso_vendedor" length="100"/>
+    <field name="usuarioUrl" type="string" column="usuario_url" length="100"/>
+    <many-to-one field="campana" target-entity="Campanas" orphan-removal="">
+      <join-columns>
+        <join-column name="campana_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

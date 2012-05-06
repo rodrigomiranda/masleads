@@ -1,0 +1,7 @@
+parameters:
+#    tipddy_masleads.example.class: Tipddy\MasleadsBundle\Example
+
+services:
+#    tipddy_masleads.example:
+#        class: %tipddy_masleads.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

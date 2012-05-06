@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CampanasProspectosFeedbackParametros" table="campanas_prospectos_feedback_parametros">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="campanaProspectosFeedback" target-entity="CampanasProspectosFeedback" orphan-removal="">
+      <join-columns>
+        <join-column name="campana_prospectos_feedback_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoIndustriaParametro" target-entity="TiposIndustriasParametros" orphan-removal="">
+      <join-columns>
+        <join-column name="tipo_industria_parametro_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>

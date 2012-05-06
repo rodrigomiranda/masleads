@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CampanasSeguimientoRespuestas" table="campanas_seguimiento_respuestas">
+    <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="255"/>
+    <field name="telefono" type="string" column="telefono" length="50"/>
+    <field name="email" type="string" column="email" length="100"/>
+    <field name="direccion" type="string" column="direccion" length="255"/>
+    <field name="ciudad" type="string" column="ciudad" length="255"/>
+    <field name="preguntas" type="text" column="preguntas"/>
+    <field name="timestamp" type="string" column="timestamp" length="50"/>
+    <field name="campanaId" type="bigint" column="campana_id"/>
+    <field name="usuarioUrl" type="string" column="usuario_url" length="100"/>
+    <many-to-one field="tipoSeguimientoRespuesta" target-entity="TiposSeguimientoRespuestas" orphan-removal="">
+      <join-columns>
+        <join-column name="tipo_seguimiento_respuesta_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <lifecycle-callbacks/>
+  </entity>
+</doctrine-mapping>
