@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Symfony Standard Edition
 ========================
 
@@ -145,3 +146,9 @@ The Symfony Standard Edition comes pre-configured with the following bundles:
 * **AcmeDemoBundle** (in dev/test env) - A demo bundle with some example code
 
 Enjoy!
+=======
+masleads
+========
+
+Masleads
+>>>>>>> c26b15e808e6b210647b21816c18e77f376eb55f

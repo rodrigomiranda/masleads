@@ -1,6 +1,5 @@
 #archivos que genera localmente Symfony2 para mejorar el rendimiento
-app/bootstrap.php.cache
-app/bootstrap_cache.php.cache
+app/bootstrap*
 # directorio con todos los archivos de caché (muchísimos archivos)
 app/cache/*
 # directorio con los archivos de log (pocos archivos pero muy grandes) 
@@ -18,3 +17,5 @@ web/js/*
 nbproject
 .idea
 .tm_properties
+# Configuration files
+app/config/parameters.ini
