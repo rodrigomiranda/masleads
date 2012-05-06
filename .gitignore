@@ -19,3 +19,4 @@ nbproject
 .tm_properties
 # Configuration files
 app/config/parameters.ini
+*~
