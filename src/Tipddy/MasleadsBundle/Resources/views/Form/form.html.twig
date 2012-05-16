@@ -1,0 +1,24 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block field_row %}
+<div class="field-group">
+    {{form_label(form,label|default(null))}}
+    <div class="field-wrapper">
+      {{form_widget(form)}}
+            
+       {% if errors|length > 0 %}
+         <span class="invalid-error">{{form_errors(form)}}</span>      
+      {% endif %}
+      
+    </div>
+  </div>  
+{% endblock %}
+
+{% block generic_label %}
+{% spaceless %}
+    {% if required %}
+        {% set attr = attr|merge({'class': attr.class|default('') ~ ' required'}) %}
+    {% endif %}
+    <label{% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>{{ label|trans }}{{ required ? ' *' : ''}}</label>
+{% endspaceless %}
+{% endblock %}

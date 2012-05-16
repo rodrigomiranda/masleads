@@ -51,6 +51,11 @@ class Regiones
 
 
 
+    public function __toString()
+    {
+       return $this->getRegion();
+    }
+
     /**
      * Get id
      *

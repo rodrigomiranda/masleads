@@ -2,15 +2,18 @@
 
 namespace Tipddy\MasleadsBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tipddy\MasleadsBundle\Entity\Usuarios
  *
  * @ORM\Table(name="usuarios")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Tipddy\MasleadsBundle\Entity\UsuariosRepository")
  */
-class Usuarios
+class Usuarios implements UserInterface
 {
     /**
      * @var bigint $id
@@ -25,6 +28,7 @@ class Usuarios
      * @var string $nombre
      *
      * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $nombre;
 
@@ -32,6 +36,7 @@ class Usuarios
      * @var string $apellido
      *
      * @ORM\Column(name="apellido", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $apellido;
 
@@ -186,6 +191,53 @@ class Usuarios
      * })
      */
     private $organizacion;
+
+
+
+    /*
+     * Implementation of UserInterface
+     */
+     public function getRoles()
+     {
+        return array($this->tipoUsuario);
+     }
+    
+     public function getSalt()
+     {
+        return false;
+     }
+    
+     public function getUsername()
+     {
+        return $this->getLogin();
+     }
+    
+     public function eraseCredentials()
+     {
+    
+     }
+    
+     public function equals(UserInterface $user)
+     {
+        return $user->getUsername() == $this->getUsername();
+     }
+        
+        
+     public function serialize()
+     {
+        return serialize(array(
+                           $this->getNick()
+                        ));
+     }
+    
+     public function unserialize($serialized)
+     {
+        $arr = unserialize($serialized);
+        $this->setNick($arr[0]);
+     }
+      
+
+
 
 
 

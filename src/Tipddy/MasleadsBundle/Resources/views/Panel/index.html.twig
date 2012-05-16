@@ -1,0 +1,35 @@
+{% extends "TipddyMasleadsBundle::layout.html.twig" %}
+
+{% block submenuprincipal %} {% include "TipddyMasleadsBundle::_submenu-principal-panel.html.twig" %} {% endblock %}
+
+{% block content %}
+ <form id="new-list" method="post" action="">
+  <fieldset>
+     <legend>Seleccionar Organización</legend>  
+     <div class="field-group">
+        <label class="invalid" for="name">
+          Organización
+          <span class="asterisk">*</span>  
+        </label>
+        <div class="field-wrapper">
+          <select id="organizacion" name="organizacion">
+     {% for organizacion in organizaciones %}     
+            <option value="{{ organizacion.id }}">{{ organizacion.etiqueta}}</option>
+  
+     {% else %}
+         <option value="">No hay organizaciones</option>
+     {% endfor %}
+          </select>
+        </div>
+     </div>
+  </fieldset>
+  <div class="save-cancel-group">
+    <button id="new-list-save" class="button" type="submit">Seleccionar</button>
+  </div>
+ </form>
+<p id="nav">
+   <a href="#">Organizaciones</a>
+   |
+   <a href="#">Usuarios</a>
+</p>
+{% endblock %}

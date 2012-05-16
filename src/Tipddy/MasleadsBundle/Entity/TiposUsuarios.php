@@ -37,6 +37,12 @@ class TiposUsuarios
 
 
 
+    public function __toString()
+    {
+       return $this->getEtiqueta();
+    }
+
+
     /**
      * Get id
      *

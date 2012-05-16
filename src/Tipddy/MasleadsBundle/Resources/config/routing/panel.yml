@@ -1,0 +1,3 @@
+panel:
+  pattern: /
+  defaults: { _controller: TipddyMasleadsBundle:Panel:index } 

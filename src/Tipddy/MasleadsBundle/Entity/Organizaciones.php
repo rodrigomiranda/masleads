@@ -85,6 +85,13 @@ class Organizaciones
 
 
 
+    public function __toString()
+    {
+       return $this->getEtiqueta();
+    
+    }
+
+
     /**
      * Get id
      *

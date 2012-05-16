@@ -1,0 +1,28 @@
+{% if pager.isPaginable %}
+<div class="tablenav">
+  <div class="tablenav-pages">
+      <span class="displaying-num">Mostrando {{ first_register_pager(pager)}} -  {{ last_register_pager(pager)}} de {{ pager.getTotalResults }}</span>
+        <a class="next page-numbers" href="{{ path(route, {'page': pager.getFirstPage})}} ">&laquo;</a>
+        <a class="next page-numbers" href="{{ path(route, {'page' : pager.getPreviousPage})}}">&lt;</a>
+          {% for page in pager.getPages %}
+                   {% if page == pager.getPage %}
+                     
+                      <span class="page-numbers current"> {{ page }} </span>
+                   
+                   {% else  %}  
+                      <a class="page-numbers" href="{{ path(route, {'page' : page})}}">{{ page }} </a>
+
+                   {% endif %}  
+                     
+                 {{ page != pager.getLastPage ? "-" : ""  }}
+        
+          {% endfor %}
+
+             <a class="next page-numbers" href="{{ path(route, {'page' : pager.getNextPage})}}">&gt;</a>
+             <a class="next page-numbers" href="{{ path(route, {'page' : pager.getLastPage} )}}">&raquo;</a>
+           
+
+  </div>
+</div>
+
+{% endif %}

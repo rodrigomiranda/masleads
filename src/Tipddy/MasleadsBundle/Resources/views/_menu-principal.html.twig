@@ -1,0 +1,13 @@
+{% set tab = app.request.attributes.get('_route') %}
+
+<ul id="ul-menuprincipal" class="nav sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
+     <li id="m-panel" {{ route_active(tab, 'panel') ? 'class="sfHover"' : '' }}>
+        <a href="{{ path('panel') }}">Panel</a>
+     </li>
+     <li id="m-campanas" {{ route_active(tab, 'campana') ? 'class="sfHover"' : '' }}>
+         <a class="sf-with-ul" href="{{ path('campana')}}">Campañas</a>
+     </li>
+     <li id="m-sistema" {{ route_active(tab, ['usuario', 'organizacion', 'comentario']) ?  'class="sfHover"' : '' }}>
+       <a href="{{ path('usuario')}}" class="sf-with-ul">Datos</a>
+    </li>
+</ul>

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Tipddy\MasleadsBundle\TipddyMasleadsBundle(),
             new Tipddy\ApiBundle\TipddyApiBundle(),
+            new MakerLabs\PagerBundle\MakerLabsPagerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

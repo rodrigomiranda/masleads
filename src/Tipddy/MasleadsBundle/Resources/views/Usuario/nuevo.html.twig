@@ -1,0 +1,55 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{#
+{% import 'TipddyMasleadsBundle::_macros-campos-formulario.html.twig' as fr %}
+#}
+
+{% block content %}
+<form action="{{ path('usuario_crear')}}" method="post" {{ form_enctype(form) }}>
+ <fieldset>
+     <legend>Nuevo Usuario</legend> 
+ {#} 
+     {{ fr.campo(form.nombre, 'Nombre') }}
+     {{ fr.campo(form.apellido, 'Apellido') }}
+     {{ fr.campo(form.rut, 'Rut') }}
+     {{ fr.campo(form.empresa, 'Empresa') }}
+     {{ fr.campo(form.email, 'Email') }}      
+     {{ fr.campo(form.codigoPostal, 'Código Potal') }}
+     {{ fr.campo(form.direccion, 'Dirección') }}     
+     {{ fr.campo(form.region, 'Región') }}          
+     {{ fr.campo(form.provincia, 'Provincia') }}
+     {{ fr.campo(form.telefono, 'Teléfono') }}          
+     {{ fr.campo(form.celular, 'Celular') }}
+     {{ fr.campo(form.tipoUsuario, 'Tipo Usuario') }}     
+     {{ fr.campo(form.organizacion, 'Organización') }}
+     {{ fr.campo(form.login, 'Login') }}
+     {{ fr.campo(form.password, 'Password') }}
+     
+     {{ form_rest(form) }}          
+ #}
+ 
+ {{ form_row(form.nombre)}}
+ {{ form_row(form.apellido)}}
+ {{ form_row(form.rut)}}
+ {{ form_row(form.empresa)}}
+ {{ form_row(form.email)}}
+ {{ form_row(form.codigoPostal)}}
+ {{ form_row(form.direccion)}}
+ {{ form_row(form.region)}}
+ {{ form_row(form.provincia)}}
+ {{ form_row(form.telefono)}}
+ {{ form_row(form.celular)}}
+ {{ form_row(form.tipoUsuario)}}
+ {{ form_row(form.organizacion)}}
+ {{ form_row(form.login)}}
+ {{ form_row(form.password)}}         
+           
+ </fieldset>
+ <p>
+   <button class="button" type="submit">Guardar</button>
+ </p>
+ 
+
+</form>
+
+{% endblock %}

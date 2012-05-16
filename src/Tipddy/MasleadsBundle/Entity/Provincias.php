@@ -47,6 +47,13 @@ class Provincias
 
 
 
+
+    public function __toString()
+    {
+       return $this->getProvincia();
+    
+    }
+
     /**
      * Get id
      *

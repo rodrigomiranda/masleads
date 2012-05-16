@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
+    - { resource: parameters.yml }  
+    - { resource: services.yml } 
+   
 
 framework:
     #esi:             ~
@@ -20,7 +23,12 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
+  #rodrigo
+    form:
+       resources:
+         # - 'form_div_layout.html.twig'
+         - 'TipddyMasleadsBundle:Form:form.html.twig'
+          
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%

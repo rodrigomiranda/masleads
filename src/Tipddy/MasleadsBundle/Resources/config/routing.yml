@@ -1,3 +1,24 @@
-TipddyMasleadsBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TipddyMasleadsBundle:Default:index }
+TipddyMasleadsBundle_login:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/login.yml"
+    prefix: /
+    
+TipddyMasleadsBundle_panel:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/panel.yml"
+    prefix: /panel     
+
+TipddyMasleadsBundle_campana:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/campana.yml"
+    prefix: /campana     
+
+TipddyMasleadsBundle_usuario:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/usuario.yml"
+    prefix: /usuario    
+
+TipddyMasleadsBundle_organizacion:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/organizacion.yml"
+    prefix: /organizacion       
+
+
+TipddyMasleadsBundle_comentario:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/comentario.yml"
+    prefix: /comentario     

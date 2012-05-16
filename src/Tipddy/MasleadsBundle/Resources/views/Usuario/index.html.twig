@@ -1,0 +1,12 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block content %}
+
+{% include 'TipddyMasleadsBundle::_listados-entidades-generales.html.twig' with {
+            'title' : 'Listados de Usuarios',
+            'encabezado': ['Nombre', 'Apellido', 'Rut', 'Empresa', 'Email', 'Postal', 'Teléfono', 'Celular'],
+            'columns' : ['nombre', 'apellido', 'rut', 'empresa', 'email', 'codigoPostal', 'telefono', 'celular'],
+            'route' : 'usuario',
+            'pager' : pager } only  %}
+
+{% endblock %}

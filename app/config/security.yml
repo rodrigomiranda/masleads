@@ -1,38 +1,24 @@
 security:
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
-
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-
-    providers:
-        in_memory:
-            users:
-                user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
-        secured_area:
-            pattern:    ^/demo/secured/
-            form_login:
-                check_path: /demo/secured/login_check
-                login_path: /demo/secured/login
-            logout:
-                path:   /demo/secured/logout
-                target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
-
+       administrator:
+             pattern: ^/
+             anonymous: ~
+             form_login: 
+                login_path: login
+                check_path: login_check
+             
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+#       - { path: ^/panel , roles: [ROLE_TIPDDY, ROLE_ADMIN, ROLE_GERENTE, ROLE_VENDEDOR] } 
+#       - { path: ^/campana , roles: [ROLE_TIPDDY, ROLE_ADMIN, ROLE_GERENTE, ROLE_VENDEDOR] }        
+#       - { path: ^/usuario , roles: [ROLE_TIPDDY, ROLE_ADMIN] }
+#       - { path: ^/organizacion , roles: ROLE_TIPDDY }
+#       - { path: ^/comentario , roles: ROLE_TIPDDY }           
+        
+    providers:
+       usuarios:
+          entity: { class: Tipddy\MasleadsBundle\Entity\Usuarios, property: login }
+          
+          
+    encoders:
+       Tipddy\MasleadsBundle\Entity\Usuarios: plaintext
+   #   Tipddy\MasleadsBundle\Entity\Usuarios: { algorithm: sha512, iterations: 10} 

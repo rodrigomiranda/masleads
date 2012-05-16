@@ -1,0 +1,17 @@
+ <ul>
+ {% set subtab = app.request.attributes.get('_route') %}
+ 
+  {% if route_active(subtab, 'panel') %}       
+   
+      <li><a href="" class="cat-destacada">Seleccionar Entorno</a></li>      
+  
+  
+  {% elseif route_active(subtab, ['usuario', 'organizacion', 'comentario']) %}
+  
+   <li><a href="{{ path('usuario') }}" {{ route_active(subtab, 'usuario') ? 'class="cat-destacada"' : '' }}>Usuarios</a></li>
+   <li><a href="{{ path('organizacion')}}" {{ route_active(subtab, 'organizacion') ? 'class="cat-destacada"' : '' }}>Organizaciones</a></li>
+   <li><a href="{{ path('comentario')}}" {{ route_active(subtab, 'comentario') ? 'class="cat-destacada"' : '' }}>Comentarios, sugerencias o Ayudas</a></li>     
+  {% endif %}
+  
+    
+ </ul>

@@ -1,0 +1,9 @@
+login:
+   pattern: /
+   defaults: { _controller:'TipddyMasleadsBundle:Default:index' }
+   
+login_check:
+   pattern: /login_check
+   
+login_logout:
+   pattern: /logout

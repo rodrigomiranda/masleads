@@ -1,0 +1,5 @@
+services:
+    twig.extension.tipddy.masleads.util:
+        class: Tipddy\MasleadsBundle\Twig\Extension\UtilExtension
+        tags:
+            - { name: twig.extension }

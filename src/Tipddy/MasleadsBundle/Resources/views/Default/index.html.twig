@@ -1,1 +1,33 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+<link href="{{ asset('bundles/tipddymasleads/css/login.css') }}" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block body %}
+<div id="login">
+    <h1><img src="{{ asset('bundles/tipddymasleads/images/logo-masleads.png') }}" /></h1>
+    <form id="login-form" action="{{ path('login_check')}}" method="post">
+     
+     <p>
+        <label>
+           <label for="usuarios_login">Login</label>            <br />
+           <input type="text" name="_username" id="input_login" value="{{ last_username }}" />        </label>
+      </p>
+      <p>
+          <label>
+             <label for="usuarios_password">Password</label>             <br />
+             <input type="password" name="_password" id="input_password" />          </label>
+      </p>    
+      <p  class="submit">
+          <button  name="enviarFormulario">Iniciar Sesión</button>
+      </p>
+      <input type="hidden" name="usuarios[id]" id="usuarios_id" />
+   </form>
+    <p id="nav">        
+        <a class="iframe" href="/login/recuperacionClave" title="Recuperación de Contraseña Pérdida">¿Ólvido su Contraseña?</ a>
+    </p>
+</div>
+
+{% endblock %}

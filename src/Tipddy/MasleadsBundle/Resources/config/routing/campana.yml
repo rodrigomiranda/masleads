@@ -1,0 +1,3 @@
+campana:
+  pattern: /
+  defaults: { _controller: TipddyMasleadsBundle:Campana:index }

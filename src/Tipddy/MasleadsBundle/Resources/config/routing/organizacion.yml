@@ -1,0 +1,4 @@
+organizacion:
+   pattern: /
+   defaults: {_controller:TipddyMasleadsBundle:Organizacion:index}
+  

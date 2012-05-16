@@ -1,0 +1,22 @@
+{% macro campo(form_campo, label) %}
+  <div class="field-group">
+    {{form_label(form_campo, label)}}
+    <div class="field-wrapper">
+      {{form_widget(form_campo)}}
+            
+      {% if form_errors(form_campo)|length > 0 %}
+         <span class="invalid-error">{{form_errors(form_campo)}}</span>      
+      {% endif %}
+      
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro text(campo, label) %}
+ <div class="field-group">
+   {{ label }}
+   <div class="field-wrapper">
+      {{ campo }}
+   </div>
+ </div>
+{% endmacro %}

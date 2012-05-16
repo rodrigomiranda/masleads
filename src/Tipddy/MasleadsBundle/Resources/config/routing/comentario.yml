@@ -1,0 +1,4 @@
+comentario:
+   pattern: /
+   defaults: { _controller:TipddyMasleadsBundle:Comentario:index }
+   
