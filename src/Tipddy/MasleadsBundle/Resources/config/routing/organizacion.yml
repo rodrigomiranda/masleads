@@ -1,4 +1,34 @@
 organizacion:
-   pattern: /
-   defaults: {_controller:TipddyMasleadsBundle:Organizacion:index}
+   pattern: /{page}
+   defaults: {_controller:TipddyMasleadsBundle:Organizacion:index, page: 1}
+   requirements:
+      page: \d+
+   
+organizacion_ver:
+    pattern:  /{id}/ver
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:ver" }
+
+organizacion_nuevo:
+    pattern:  /nuevo
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:nuevo" }
+
+organizacion_crear:
+    pattern:  /crear
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:crear" }
+    requirements: { _method: post }
+
+organizacion_editar:
+    pattern:  /{id}/editar
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:editar" }
+
+organizacion_actualizar:
+    pattern:  /{id}/actualizar
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:actualizar" }
+    requirements: { _method: post }
+
+organizacion_borrar:
+    pattern:  /{id}/borrar
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:borrar" }
+    requirements: { _method: post }
+
   

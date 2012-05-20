@@ -1,1 +1,12 @@
 {% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block content %}
+
+{% include 'TipddyMasleadsBundle::_listados-entidades-generales.html.twig' with {
+            'title' : 'Listados de Organizaciones',
+            'encabezado': ['Nombre', 'Rut', 'País', 'Región', 'Provincia', 'Estado'],
+            'columns' : ['etiqueta', 'rut', 'pais', 'region', 'provincia', 'estado'],
+            'route' : 'organizacion',
+            'pager' : pager } only  %}
+
+{% endblock %}

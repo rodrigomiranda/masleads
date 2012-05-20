@@ -32,17 +32,24 @@
  {{ form_row(form.apellido)}}
  {{ form_row(form.rut)}}
  {{ form_row(form.empresa)}}
- {{ form_row(form.email)}}
- {{ form_row(form.codigoPostal)}}
- {{ form_row(form.direccion)}}
- {{ form_row(form.region)}}
- {{ form_row(form.provincia)}}
- {{ form_row(form.telefono)}}
- {{ form_row(form.celular)}}
- {{ form_row(form.tipoUsuario)}}
- {{ form_row(form.organizacion)}}
- {{ form_row(form.login)}}
- {{ form_row(form.password)}}         
+ {{ form_row(form.cargo) }}
+ {{ form_row(form.profesion, { 'label' : 'Profesión'}) }}
+ {{ form_row(form.especialidades, { 'label' : 'Especialidad'}) }}  
+ {{ form_row(form.email) }}
+ {{ form_row(form.email2) }} 
+ {{ form_row(form.login) }}
+ {{ form_row(form.password) }}  
+ {{ form_row(form.login) }}
+ {{ form_row(form.tipoUsuario,  {'label':'Rol'}) }}    
+ {{ form_row(form.codigoPostal, {'label':'Código Postal'}) }}
+ {{ form_row(form.direccion, {'label':'Dirección'}) }}
+ {{ form_row(form.region, {'label':'Región'}) }}
+ {{ form_row(form.provincia, {'label':'Provincia'}) }}
+ {{ form_row(form.telefono, {'label':'Teléfono'}) }}
+ {{ form_row(form.telefono2, {'label':'Teléfono 2'}) }} 
+ {{ form_row(form.celular, {'label':'Celular'}) }}
+ {{ form_row(form.paginaWeb, {'label':'Página Web'}) }}
+       
            
  </fieldset>
  <p>

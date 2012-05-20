@@ -1,4 +1,34 @@
 comentario:
-   pattern: /
-   defaults: { _controller:TipddyMasleadsBundle:Comentario:index }
-   
+   pattern: /{page}
+   defaults: { _controller:TipddyMasleadsBundle:Comentario:index, page: 1 }
+   requirements:
+      page: \d+
+      
+comentario_ver:
+    pattern:  /{id}/ver
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:ver" }
+
+comentario_nuevo:
+    pattern:  /nuevo
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:nuevo" }
+
+comentario_crear:
+    pattern:  /crear
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:crear" }
+    requirements: { _method: post }
+
+comentario_editar:
+    pattern:  /{id}/editar
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:editar" }
+
+comentario_actualizar:
+    pattern:  /{id}/actualizar
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:actualizar" }
+    requirements: { _method: post }
+
+comentario_borrar:
+    pattern:  /{id}/borrar
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:borrar" }
+    requirements: { _method: post }
+
+  

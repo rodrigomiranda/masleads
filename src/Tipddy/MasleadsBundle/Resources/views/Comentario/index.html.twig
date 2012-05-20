@@ -1,1 +1,13 @@
 {% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+
+{% block content %}
+
+{% include 'TipddyMasleadsBundle::_listados-entidades-generales.html.twig' with {
+            'title' : 'Listados de Comentarios y Sugerencias',
+            'encabezado': ['Nombre', 'Asunto'],
+            'columns' : ['usuario', 'tipoEnvioInformacion'],
+            'route' : 'comentario',
+            'pager' : pager } only  %}
+
+{% endblock %}

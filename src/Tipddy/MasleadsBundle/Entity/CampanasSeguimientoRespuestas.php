@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tipddy\MasleadsBundle\Entity\CampanasSeguimientoRespuestas
  *
  * @ORM\Table(name="campanas_seguimiento_respuestas")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Tipddy\MasleadsBundle\Entity\CampanasSeguimientoRespuestasRepository")
  */
 class CampanasSeguimientoRespuestas
 {

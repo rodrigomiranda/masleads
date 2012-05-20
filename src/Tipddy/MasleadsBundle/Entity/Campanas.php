@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tipddy\MasleadsBundle\Entity\Campanas
  *
  * @ORM\Table(name="campanas")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Tipddy\MasleadsBundle\Entity\CampanasRepository")
  */
 class Campanas
 {
@@ -148,7 +148,8 @@ class Campanas
     {
         return $this->fechaInicio;
     }
-
+    
+ 
     /**
      * Set fechaTermino
      *

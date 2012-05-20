@@ -193,6 +193,12 @@ class Usuarios implements UserInterface
     private $organizacion;
 
 
+    public function __toString()
+    {
+      return $this->getNombreCompleto();
+    
+    }
+
 
     /*
      * Implementation of UserInterface
@@ -290,6 +296,14 @@ class Usuarios implements UserInterface
     {
         return $this->apellido;
     }
+    
+    
+    public function getNombreCompleto()
+    {
+       return $this->getNombre()." ".$this->getApellido();
+     
+    }
+    
 
     /**
      * Set usuarioUrl
