@@ -1,5 +1,29 @@
 {% extends "::base.html.twig" %}
 
+{% block javascripts %}
+<script type="text/javascript" src="{{ asset('public/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/blockUI/jquery.blockUI.js') }}"></script>
+
+{% if app.session.hasFlash('result_action') %}
+      {% if app.session.getFlash('result_action') == 'error' %}
+          {% set titleAction, msjAction, prefImage = global.form_title_action_error, global.form_msj_action_error, 'error' %}
+      {% else %}
+          {% set titleAction, prefImage = global.form_title_action_ok, 'ok' %}  
+          {% set msjAction = app.session.getFlash('result_action') == 'ok_save' ? global.form_msj_action_ok_save : global.form_msj_action_ok_update  %} 
+      {% endif %}
+      {# growlUI #}
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $.growlUI('{{ titleAction }}','{{ msjAction }}');
+        })
+     </script>
+    <style type="text/css">
+       div.growlUI { background: url({{ asset('bundles/tipddymasleads/images/' ~ prefImage ~ '-msj.png')}}) no-repeat 10px 10px }
+    </style>      
+{% endif %}
+
+{% endblock %}
+
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/tipddymasleads/css/admin.css') }} " />
 {% endblock %}

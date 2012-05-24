@@ -18,8 +18,8 @@ usuario_crear:
     requirements: { _method: post }
 
 usuario_editar:
-    pattern:  /{id}/editar
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:editar" }
+    pattern:  /{id}/editar/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:editar", page:1 }
 
 usuario_actualizar:
     pattern:  /{id}/actualizar

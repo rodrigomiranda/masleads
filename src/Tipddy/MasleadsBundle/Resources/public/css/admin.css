@@ -689,7 +689,7 @@ top:-3px;
 }
 
 .button, a.button-embed,  .submit input, .button-secondary {
-  background: url("../images/admin/white-grad.png") repeat-x scroll left top #F2F2F2;
+  background: repeat-x scroll left top #F2F2F2;
   text-shadow:0 1px 0 #FFFFFF;
 }
 
@@ -1884,7 +1884,7 @@ select#organizacion_id_organizacion {
 form .button, .button-small, form .button-huge {
     -moz-border-radius: 7px 7px 7px 7px;
     -moz-box-shadow: 0 1px 0 #f46e49, 0 -1px 0 #f46e49;
-    background: url("/release/5.5.4/images/btn_overlay.png") repeat-x scroll 0 50% #f46e49;  /* 00B5D5*/
+    background: repeat-x scroll 0 50% #f46e49;  /* 00B5D5*/
     border-color: rgba(255, 255, 255, 0.5) -moz-use-text-color -moz-use-text-color;
     border-right: 0 none;
     border-style: solid none none;

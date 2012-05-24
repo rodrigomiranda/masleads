@@ -6,15 +6,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
 
 /**
  * Tipddy\MasleadsBundle\Entity\Usuarios
  *
  * @ORM\Table(name="usuarios")
  * @ORM\Entity(repositoryClass="Tipddy\MasleadsBundle\Entity\UsuariosRepository")
+ * @DoctrineAssert\UniqueEntity("login")
  */
 class Usuarios implements UserInterface
-{
+{	
     /**
      * @var bigint $id
      *
@@ -51,6 +53,7 @@ class Usuarios implements UserInterface
      * @var string $login
      *
      * @ORM\Column(name="login", type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      */
     private $login;
 
@@ -58,6 +61,7 @@ class Usuarios implements UserInterface
      * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=50, nullable=true)
+     * @Assert\MinLength(6)
      */
     private $password;
 
@@ -93,6 +97,8 @@ class Usuarios implements UserInterface
      * @var string $email
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -100,6 +106,7 @@ class Usuarios implements UserInterface
      * @var string $email2
      *
      * @ORM\Column(name="email2", type="string", length=255, nullable=true)
+     * @Assert\Email()
      */
     private $email2;
 
@@ -142,6 +149,7 @@ class Usuarios implements UserInterface
      * @var string $empresa
      *
      * @ORM\Column(name="empresa", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $empresa;
 
@@ -193,6 +201,7 @@ class Usuarios implements UserInterface
     private $organizacion;
 
 
+
     public function __toString()
     {
       return $this->getNombreCompleto();
@@ -242,9 +251,6 @@ class Usuarios implements UserInterface
         $this->setNick($arr[0]);
      }
       
-
-
-
 
 
     /**
@@ -313,6 +319,7 @@ class Usuarios implements UserInterface
     public function setUsuarioUrl($usuarioUrl)
     {
         $this->usuarioUrl = $usuarioUrl;
+       
     }
 
     /**

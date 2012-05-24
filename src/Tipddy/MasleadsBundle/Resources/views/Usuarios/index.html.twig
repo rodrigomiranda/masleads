@@ -1,0 +1,71 @@
+<h1>Usuarios list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Usuariourl</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Rut</th>
+            <th>Cargo</th>
+            <th>Profesion</th>
+            <th>Especialidades</th>
+            <th>Email</th>
+            <th>Email2</th>
+            <th>Codigopostal</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Telefono2</th>
+            <th>Celular</th>
+            <th>Empresa</th>
+            <th>Paginaweb</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('usuarios_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.nombre }}</td>
+            <td>{{ entity.apellido }}</td>
+            <td>{{ entity.usuarioUrl }}</td>
+            <td>{{ entity.login }}</td>
+            <td>{{ entity.password }}</td>
+            <td>{{ entity.rut }}</td>
+            <td>{{ entity.cargo }}</td>
+            <td>{{ entity.profesion }}</td>
+            <td>{{ entity.especialidades }}</td>
+            <td>{{ entity.email }}</td>
+            <td>{{ entity.email2 }}</td>
+            <td>{{ entity.codigoPostal }}</td>
+            <td>{{ entity.direccion }}</td>
+            <td>{{ entity.telefono }}</td>
+            <td>{{ entity.telefono2 }}</td>
+            <td>{{ entity.celular }}</td>
+            <td>{{ entity.empresa }}</td>
+            <td>{{ entity.paginaWeb }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('usuarios_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('usuarios_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('usuarios_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
