@@ -1,5 +1,10 @@
 {% extends 'TipddyMasleadsBundle::layout.html.twig' %}
 
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript" src="{{ asset('bundles/tipddymasleads/js/regcomu.js') }}"></script> 
+{% endblock %}
+
 {% block content %}
 
 <form action="{{ path('usuario_crear')}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">

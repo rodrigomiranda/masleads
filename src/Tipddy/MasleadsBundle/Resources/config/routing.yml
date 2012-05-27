@@ -22,3 +22,7 @@ TipddyMasleadsBundle_organizacion:
 TipddyMasleadsBundle_comentario:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/comentario.yml"
     prefix: /comentario     
+    
+TipddyMasleadsBundle_ajax:
+    resource: "@TipddyMasleadsBundle/Resources/config/routing/ajax.yml"
+    prefix: /ajax   

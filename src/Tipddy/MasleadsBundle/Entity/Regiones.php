@@ -48,6 +48,12 @@ class Regiones
      * @ORM\Column(name="pais_id", type="integer", nullable=false)
      */
     private $paisId;
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comunas", mappedBy="region")
+     */
+     private $comunas;
 
 
 
@@ -144,5 +150,29 @@ class Regiones
     public function getPaisId()
     {
         return $this->paisId;
+    }
+    public function __construct()
+    {
+        $this->comunas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add comunas
+     *
+     * @param Tipddy\MasleadsBundle\Entity\Comunas $comunas
+     */
+    public function addComunas(\Tipddy\MasleadsBundle\Entity\Comunas $comunas)
+    {
+        $this->comunas[] = $comunas;
+    }
+
+    /**
+     * Get comunas
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComunas()
+    {
+        return $this->comunas;
     }
 }

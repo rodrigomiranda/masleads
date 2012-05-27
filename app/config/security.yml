@@ -20,5 +20,5 @@ security:
           
           
     encoders:
-       Tipddy\MasleadsBundle\Entity\Usuarios: plaintext
-   #   Tipddy\MasleadsBundle\Entity\Usuarios: { algorithm: sha512, iterations: 10} 
+   #    Tipddy\MasleadsBundle\Entity\Usuarios: plaintext
+      Tipddy\MasleadsBundle\Entity\Usuarios: { algorithm: sha512, iterations: 10} 

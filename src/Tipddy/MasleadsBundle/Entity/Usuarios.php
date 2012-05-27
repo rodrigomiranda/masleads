@@ -173,12 +173,12 @@ class Usuarios implements UserInterface
     /**
      * @var Provincias
      *
-     * @ORM\ManyToOne(targetEntity="Provincias")
+     * @ORM\ManyToOne(targetEntity="Comunas")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="comuna", referencedColumnName="id")
      * })
      */
-    private $provincia;
+    private $comuna;
 
     /**
      * @var Regiones
@@ -662,16 +662,7 @@ class Usuarios implements UserInterface
         $this->provincia = $provincia;
     }
 
-    /**
-     * Get provincia
-     *
-     * @return Tipddy\MasleadsBundle\Entity\Provincias 
-     */
-    public function getProvincia()
-    {
-        return $this->provincia;
-    }
-
+  
     /**
      * Set region
      *
@@ -710,5 +701,25 @@ class Usuarios implements UserInterface
     public function getOrganizacion()
     {
         return $this->organizacion;
+    }
+
+    /**
+     * Set comuna
+     *
+     * @param Tipddy\MasleadsBundle\Entity\Comunas $comuna
+     */
+    public function setComuna(\Tipddy\MasleadsBundle\Entity\Comunas $comuna)
+    {
+        $this->comuna = $comuna;
+    }
+
+    /**
+     * Get comuna
+     *
+     * @return Tipddy\MasleadsBundle\Entity\Comunas 
+     */
+    public function getComuna()
+    {
+        return $this->comuna;
     }
 }

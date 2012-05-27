@@ -1,5 +1,10 @@
 {% extends 'TipddyMasleadsBundle::layout.html.twig' %}
 
+{% block javacripts %}
+  {{ parent() }}
+   <script type="text/javascript" src="{{ asset('public/js/regcomu.js') }}"></script> 
+{% endblock %}
+
 {% block content %}
 
 <form action="{{ path('usuario_actualizar', {'id' : entity.id })}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
