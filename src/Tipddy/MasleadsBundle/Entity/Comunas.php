@@ -57,6 +57,13 @@ class Comunas
 
 
 
+
+    public function __toString()
+    {
+       return $this->getComuna();
+    }
+
+
     /**
      * Get id
      *

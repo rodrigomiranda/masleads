@@ -171,7 +171,7 @@ class Usuarios implements UserInterface
     private $tipoUsuario;
 
     /**
-     * @var Provincias
+     * @var comuna
      *
      * @ORM\ManyToOne(targetEntity="Comunas")
      * @ORM\JoinColumns({

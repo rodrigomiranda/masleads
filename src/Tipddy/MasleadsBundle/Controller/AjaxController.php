@@ -9,11 +9,13 @@ class AjaxController extends Controller
     public function comunasAction($reg)
     {
         $request = $this->getRequest();
-        
-    //    if ($request->isXmlHttpRequest()) {
+          
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getEntityManager();
             
             $region = $em->getRepository('TipddyMasleadsBundle:Regiones')->find($reg);
+            
+           // throw new \Exception("EL id de la región es " . $region->getId());
             
             if (!$region) {              
                throw $this->createNotFoundException('Unable to find register');
@@ -23,6 +25,6 @@ class AjaxController extends Controller
                                 'region' => $region,
             ));      
         
-      //  }
+        }
     }
 }

@@ -20,7 +20,8 @@ class AppKernel extends Kernel
             new Tipddy\MasleadsBundle\TipddyMasleadsBundle(),
             new Tipddy\ApiBundle\TipddyApiBundle(),
             new MakerLabs\PagerBundle\MakerLabsPagerBundle(),
-        );
+            new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
