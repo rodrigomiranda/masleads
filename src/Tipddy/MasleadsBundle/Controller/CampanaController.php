@@ -7,6 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use MakerLabs\PagerBundle\Pager;
 use MakerLabs\PagerBundle\Adapter\DoctrineOrmAdapter;
 
+use Tipddy\MasleadsBundle\Form\CampanasType;
+use Tipddy\MasleadsBundle\Entity\Campanas;
+
+
 
 class CampanaController extends Controller
 {
@@ -27,5 +31,19 @@ class CampanaController extends Controller
        ));
     
     }
+
+   public function nuevoAction()
+   {
+	   
+	   $entity = new Campanas();
+	   
+	   $form = $this->createForm(new CampanasType(), $entity);
+	   
+	   return $this->render('TipddyMasleadsBundle:Campana:nuevo.html.twig', array(
+	                        'entity' => $entity,
+	                        'form'   => $form->createView(),	   
+	   ));   
+	   
+   }
 
 }

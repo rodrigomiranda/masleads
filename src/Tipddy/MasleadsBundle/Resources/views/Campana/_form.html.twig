@@ -1,0 +1,11 @@
+ {{ form_row(form.etiqueta,{'label' : 'Nombre'}) }}
+{# Fecha Inicio #}
+ {{ form_row(form.fechaInicio, {'attr' : { 'class' :'fecha'}, 'label' : 'Fecha Inicio' }) }}
+
+ {{ form_row(form.fechaTermino, {'attr': { 'class' : 'fecha' } , 'label' : 'Fecha Termino' }) }}
+ {{ form_row(form.industria, {'label' : 'Tipo Industria' }) }}
+ {{ form_row(form.periodoPrueba, {'label' : 'Periodo Prueba' }) }}
+ {{ form_row(form.fechaInicioPrueba, {'attr' : { 'class' : 'fecha'}, 'label' : 'Fecha Inicio Prueba' }) }}
+ {{ form_row(form.fechaTerminoPrueba, {'attr' : { 'class' : 'fecha'},  'label' : 'Fecha Término Prueba' }) }} 
+ {{ form_row(form.sitioWeb, {'label' : 'Sitio Web' }) }}
+ {{ form_rest(form) }}          

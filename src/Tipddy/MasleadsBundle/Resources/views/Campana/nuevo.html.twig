@@ -1,0 +1,15 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block content %}
+
+<form action="{{ path('campana_crear')}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+ <fieldset>
+ <legend>Nueva Campaña</legend> 
+  {% include 'TipddyMasleadsBundle:Campana:_form.html.twig' %}
+ </fieldset>
+ 
+{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Guardar', 'route':'campana'} only %} 
+
+</form>
+ 
+{% endblock %}
