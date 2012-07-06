@@ -3,6 +3,7 @@
 namespace Tipddy\MasleadsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tipddy\MasleadsBundle\Entity\Organizaciones
@@ -25,6 +26,7 @@ class Organizaciones
      * @var string $etiqueta
      *
      * @ORM\Column(name="etiqueta", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $etiqueta;
 
@@ -32,6 +34,7 @@ class Organizaciones
      * @var string $rut
      *
      * @ORM\Column(name="rut", type="string", length=12, nullable=false)
+     * @Assert\NotBlank()
      */
     private $rut;
 
@@ -39,6 +42,7 @@ class Organizaciones
      * @var text $giro
      *
      * @ORM\Column(name="giro", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     private $giro;
 
@@ -46,13 +50,17 @@ class Organizaciones
      * @var string $direccion
      *
      * @ORM\Column(name="direccion", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $direccion;
 
+  
     /**
-     * @var string $pais
-     *
-     * @ORM\Column(name="pais", type="string", length=255, nullable=false)
+     * 
+     * @ORM\ManyToOne(targetEntity="Paises")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="pais_id",    referencedColumnName="id")
+     * })
      */
     private $pais;
 

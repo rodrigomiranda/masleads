@@ -7,7 +7,7 @@
      <li id="m-campanas" {{ route_active(tab, 'campaign') ? 'class="sfHover"' : '' }}>
          <a class="sf-with-ul" href="{{ path('campaign')}}">Campañas</a>
      </li>
-     <li id="m-sistema" {{ route_active(tab, ['usuario', 'organizacion', 'comentario']) ?  'class="sfHover"' : '' }}>
-       <a href="{{ path('usuario')}}" class="sf-with-ul">Datos</a>
+     <li id="m-sistema" {{ route_active(tab, ['user', 'company', 'comentario']) ?  'class="sfHover"' : '' }}>
+       <a href="{{ path('user')}}" class="sf-with-ul">Datos</a>
     </li>
 </ul>

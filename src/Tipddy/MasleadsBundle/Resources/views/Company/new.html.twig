@@ -1,0 +1,20 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block javascripts %} 
+ {{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/tipddymasleads/js/formularios.js') }}"></script>
+ {% endblock %}
+
+{% block content %}
+
+<form action="{{ path('company_create')}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+ <fieldset>
+ <legend>Nueva Organización</legend> 
+  {% include 'TipddyMasleadsBundle:Company:_form.html.twig' %}
+ </fieldset>
+ 
+{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Guardar', 'route':'company'} only %} 
+
+</form>
+ 
+{% endblock %}

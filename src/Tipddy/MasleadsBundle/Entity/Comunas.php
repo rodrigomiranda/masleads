@@ -48,7 +48,7 @@ class Comunas
     /**
      * @var Comunas
      *
-     * @ORM\ManyToOne(targetEntity="Comunas")
+     * @ORM\ManyToOne(targetEntity="Provincias")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="provincia_id", referencedColumnName="id")
      * })

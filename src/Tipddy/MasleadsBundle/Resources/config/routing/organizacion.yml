@@ -1,34 +1,34 @@
-organizacion:
+company:
    pattern: /{page}
-   defaults: {_controller:TipddyMasleadsBundle:Organizacion:index, page: 1}
+   defaults: {_controller:"TipddyMasleadsBundle:Organizacion:index", page: 1}
    requirements:
       page: \d+
    
-organizacion_ver:
-    pattern:  /{id}/ver
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:ver" }
+company_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:show" }
 
-organizacion_nuevo:
-    pattern:  /nuevo
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:nuevo" }
+company_new:
+    pattern:  /new
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:new" }
 
-organizacion_crear:
-    pattern:  /crear
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:crear" }
+company_create:
+    pattern:  /create
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:create" }
     requirements: { _method: post }
 
-organizacion_editar:
-    pattern:  /{id}/editar
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:editar" }
+company_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:edit" }
 
-organizacion_actualizar:
-    pattern:  /{id}/actualizar
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:actualizar" }
+company_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:update" }
     requirements: { _method: post }
 
-organizacion_borrar:
-    pattern:  /{id}/borrar
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:borrar" }
+company_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:delete" }
     requirements: { _method: post }
 
   

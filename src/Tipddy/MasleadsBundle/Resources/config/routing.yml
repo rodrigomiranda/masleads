@@ -10,13 +10,13 @@ TipddyMasleadsBundle_campaign:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/campana.yml"
     prefix: /campaign    
 
-TipddyMasleadsBundle_usuario:
+TipddyMasleadsBundle_user:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/usuario.yml"
-    prefix: /usuario    
+    prefix: /user    
 
-TipddyMasleadsBundle_organizacion:
+TipddyMasleadsBundle_company:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/organizacion.yml"
-    prefix: /organizacion       
+    prefix: /company       
 
 
 TipddyMasleadsBundle_comentario:

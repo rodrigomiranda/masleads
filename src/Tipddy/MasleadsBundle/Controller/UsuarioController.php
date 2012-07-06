@@ -27,23 +27,23 @@
           $pager = new Pager($adapter, array('page' => $page, 'limit' => $this->container->getParameter('tipddy.registers_by_pages')));
           
           
-          return $this->render('TipddyMasleadsBundle:Usuario:index.html.twig', array('pager' => $pager));
+          return $this->render('TipddyMasleadsBundle:User:index.html.twig', array('pager' => $pager));
        
        }
        
        
-       public function nuevoAction()
+       public function newAction()
        {
           $entity = new Usuarios();
           $form = $this->createForm(new UsuariosType, $entity);
           
-          return $this->render('TipddyMasleadsBundle:Usuario:nuevo.html.twig', array(
+          return $this->render('TipddyMasleadsBundle:User:new.html.twig', array(
                          'entity' => $entity,
                          'form' => $form->createView(),
           ));
        }
   
-      public function crearAction()
+      public function createAction()
       {
                   
          $peticion = $this->getRequest();
@@ -80,14 +80,14 @@
             
             $this->get('session')->setFlash('result_action', 'ok_save');
             
-            return $this->redirect($this->generateUrl('usuario_editar', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('user_edit', array('id' => $entity->getId())));
          
          } else {
             $this->get('session')->setFlash('result_action', 'error');
          }
        
          
-         return $this->render('TipddyMasleadsBundle:Usuario:nuevo.html.twig', array(
+         return $this->render('TipddyMasleadsBundle:User:new.html.twig', array(
                               'entity' => $entity,
                               'form' => $form->createView(),
          
@@ -95,7 +95,7 @@
       
       } 
       
-      public function editarAction($id)
+      public function editAction($id)
       {
          $em = $this->getDoctrine()->getEntityManager();
          
@@ -108,14 +108,14 @@
          $editForm = $this->createForm(new UsuariosType(), $entity);
          
          
-         return $this->render('TipddyMasleadsBundle:Usuario:editar.html.twig', array(
+         return $this->render('TipddyMasleadsBundle:User:edit.html.twig', array(
                               'entity' => $entity,
                               'form'   => $editForm->createView(),
          ));
       
       }
       
-      public function actualizarAction($id)
+      public function updateAction($id)
       {
           $em = $this->getDoctrine()->getEntityManager();
           $usuario = $em->getRepository('TipddyMasleadsBundle:Usuarios')->find($id);
@@ -148,17 +148,14 @@
              $em->flush();
              
              $this->get('session')->setFlash('result_action', 'ok_update');
-             return $this->redirect($this->generateUrl('usuario_editar', array('id' => $usuario->getId())));
+             return $this->redirect($this->generateUrl('user_edit', array('id' => $usuario->getId())));
           }
           
-          return $this->render('TipddyMasleadsBundle:Usuario:editar.html.twig', array(
+          return $this->render('TipddyMasleadsBundle:User:edit.html.twig', array(
                                'entity' => $usuario,
                                'form' => $editForm->createView(),
           ));
           
       }
       
-      
-      
-       
   }

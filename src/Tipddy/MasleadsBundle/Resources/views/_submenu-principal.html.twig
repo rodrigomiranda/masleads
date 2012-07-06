@@ -6,10 +6,10 @@
       <li><a href="" class="cat-destacada">Seleccionar Entorno</a></li>      
   
   
-  {% elseif route_active(subtab, ['usuario', 'organizacion', 'comentario']) %}
+  {% elseif route_active(subtab, ['user', 'company', 'comentario']) %}
   
-   <li><a href="{{ path('usuario') }}" {{ route_active(subtab, 'usuario') ? 'class="cat-destacada"' : '' }}>Usuarios</a></li>
-   <li><a href="{{ path('organizacion')}}" {{ route_active(subtab, 'organizacion') ? 'class="cat-destacada"' : '' }}>Organizaciones</a></li>
+   <li><a href="{{ path('user') }}" {{ route_active(subtab, 'user') ? 'class="cat-destacada"' : '' }}>Usuarios</a></li>
+   <li><a href="{{ path('company')}}" {{ route_active(subtab, 'company') ? 'class="cat-destacada"' : '' }}>Organizaciones</a></li>
    <li><a href="{{ path('comentario')}}" {{ route_active(subtab, 'comentario') ? 'class="cat-destacada"' : '' }}>Comentarios, sugerencias o Ayudas</a></li>     
   {% endif %}
   
