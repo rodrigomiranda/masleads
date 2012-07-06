@@ -1,32 +1,32 @@
-usuario:
+user:
     pattern: /{page}
-    defaults: { _controller:TipddyMasleadsBundle:Usuario:index, page: 1}
+    defaults: { _controller:"TipddyMasleadsBundle:Usuario:index", page: 1}
     requirements:
        page: \d+
   
-usuario_ver:
+user_ver:
     pattern:  /{id}/ver
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:ver" }
 
-usuario_nuevo:
+user_nuevo:
     pattern:  /nuevo
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:nuevo" }
 
-usuario_crear:
+user_crear:
     pattern:  /crear
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:crear" }
     requirements: { _method: post }
 
-usuario_editar:
+user_editar:
     pattern:  /{id}/editar/{page}
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:editar", page:1 }
 
-usuario_actualizar:
+user_actualizar:
     pattern:  /{id}/actualizar
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:actualizar" }
     requirements: { _method: post }
 
-usuario_borrar:
+user_borrar:
     pattern:  /{id}/borrar
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:borrar" }
     requirements: { _method: post }

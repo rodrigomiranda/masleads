@@ -3,14 +3,20 @@
 namespace Tipddy\MasleadsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContext;
+
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Tipddy\MasleadsBundle\Entity\Campanas
  *
  * @ORM\Table(name="campanas")
  * @ORM\Entity(repositoryClass="Tipddy\MasleadsBundle\Entity\CampanasRepository")
+ * @Assert\Callback(methods={"esFechaValida"})
+ * @Assert\Callback(methods={"esFechaPeriodoPruebaValida"}) 
  */
-class Campanas
+class Campanas 
 {
     /**
      * @var bigint $id
@@ -25,6 +31,7 @@ class Campanas
      * @var string $etiqueta
      *
      * @ORM\Column(name="etiqueta", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $etiqueta;
 
@@ -67,6 +74,7 @@ class Campanas
      * @var string $sitioWeb
      *
      * @ORM\Column(name="sitio_web", type="string", length=255, nullable=false)
+     * @Assert\NotBlank()
      */
     private $sitioWeb;
 
@@ -99,6 +107,15 @@ class Campanas
 
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="CampanasSeguimientoPaginas", mappedBy="campana", cascade={"persist","remove"}, orphanRemoval=true)
+     *
+     */
+    private $paginas;
+    
+
+
+  
     /**
      * Get id
      *
@@ -309,4 +326,61 @@ class Campanas
     {
         return $this->industria;
     }
+       
+    
+    
+    public function __construct()
+    {
+        $this->paginas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    
+
+    /**
+     * Get paginas
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getPaginas()
+    {
+        return $this->paginas;
+    }
+    
+    public function setPaginas($paginas)
+    {
+       $this->paginas = $paginas;
+	    
+    }
+    
+
+    public function esFechaValida(ExecutionContext $context)
+    { 
+       $propertyPath = $context->getPropertyPath(). '.fechaInicio';
+       
+        if ($this->getFechaInicio() > $this->getFechaTermino()) {
+	        
+	        $context->setPropertyPath($propertyPath);
+	        
+	        $context->addViolation('compare dates invalid', array(), null);
+        }
+    
+    
+    } 
+    
+    
+    public function esFechaPeriodoPruebaValida(ExecutionContext $context)
+    { 
+       $propertyPath = $context->getPropertyPath(). '.fechaInicioPrueba';
+       
+       if ($this->getPeriodoPrueba() ==	1) {
+       
+          if ($this->getFechaInicioPrueba() > $this->getFechaTerminoPrueba()) {
+	          $context->setPropertyPath($propertyPath);
+	          $context->addViolation('compare dates test invalid', array(), null);
+          }
+       }  
+    
+    
+    }
+     
 }

@@ -1,34 +1,42 @@
-campana:
-  pattern: /{page}
-  defaults: { _controller: TipddyMasleadsBundle:Campana:index, page: 1 }
-  requirements: 
-    page: \d+
+campaign:
+    pattern: /{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:index", page: 1 }
+    requirements: 
+        page: \d+
   
-campana_ver:
-    pattern:  /{id}/ver
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:ver" }
+campaign_show:
+    pattern:  /{id}/show/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:show", page: 1 }
+    requirements:
+        page: \d+
+        id: \d+        
+        
+campaign_new:
+    pattern:  /new
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:new" }
 
-campana_nuevo:
-    pattern:  /nuevo
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:nuevo" }
-
-campana_crear:
-    pattern:  /crear
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:crear" }
+campaign_create:
+    pattern:  /create
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:create" }
     requirements: { _method: post }
 
-campana_editar:
-    pattern:  /{id}/editar
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:editar" }
+campaign_edit:
+    pattern:  /{id}/edit/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:edit", page: 1 }
+    requirements:
+        page: \d+
+        id: \d+
 
-campana_actualizar:
-    pattern:  /{id}/actualizar
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:actualizar" }
-    requirements: { _method: post }
+campaign_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:update" }
+    requirements: 
+        _method: post
+        id: \d+ 
 
-campana_borrar:
-    pattern:  /{id}/borrar
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:borrar" }
+campaign_borrar:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:delete" }
     requirements: { _method: post }
 
   

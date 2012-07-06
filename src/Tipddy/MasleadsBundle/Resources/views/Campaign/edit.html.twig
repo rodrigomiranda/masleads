@@ -1,0 +1,28 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block javascripts %} 
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/tipddymasleads/js/formularios.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/tipddymasleads/js/embed-paginas.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+<form action="{{ path('campaign_update', { 'id' : entity.id })}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+ <fieldset>
+ <legend>Editando Campaña</legend> 
+ <div class="field-group">
+    <label for="tipddy_masleadsbundle_campanastype_apikey" >API key</label>
+    <div class="field-wrapper">
+        {{ entity.apiKey }}
+   </div>
+</div>
+ 
+  {% include 'TipddyMasleadsBundle:Campaign:_form.html.twig' %}
+ </fieldset>
+ 
+{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Actualizar', 'route':'campaign'} only %} 
+
+</form>
+ 
+{% endblock %}

@@ -6,9 +6,9 @@ TipddyMasleadsBundle_panel:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/panel.yml"
     prefix: /panel     
 
-TipddyMasleadsBundle_campana:
+TipddyMasleadsBundle_campaign:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/campana.yml"
-    prefix: /campana     
+    prefix: /campaign    
 
 TipddyMasleadsBundle_usuario:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/usuario.yml"

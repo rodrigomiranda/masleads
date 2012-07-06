@@ -1,0 +1,29 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block content %}
+
+ <fieldset>
+ <legend>Visualizando Campaña</legend> 
+ 
+  {{ _self.fieldText('apiKey', attribute(entity, 'apiKey'), 'API Key') }}
+  {{ _self.fieldText('etiqueta', attribute(entity, 'etiqueta'), 'Nombre') }}
+  {{ _self.fieldText('fechaInicio', attribute(entity, 'fechaInicio') | date('d-m-Y'), 'Fecha inicio') }}  
+  {{ _self.fieldText('fechaTermino', attribute(entity, 'fechaTermino') | date('d-m-Y'), 'Fecha termino') }}  
+  {{ _self.fieldText('industria', attribute(entity, 'industria'), 'Industria') }}   
+  {{ _self.fieldText('periodoPrueba', attribute(entity, 'periodoPrueba') == 0 ? 'No aplica' : 'Si aplica', 'Período prueba') }}    
+  
+  {% if attribute(entity, 'periodoPrueba') == 1 %}
+     {{ _self.fieldText('fechaInicioPrueba', attribute(entity, 'fechaInicioPrueba') | date('d-m-Y'), 'Fecha inicio prueba') }}  
+     {{ _self.fieldText('fechaTerminoPrueba', attribute(entity, 'fechaTerminoPrueba') | date('d-m-Y'), 'Fecha termino prueba') }}  
+  {% endif %}
+   {{ _self.fieldText('sitioWeb', attribute(entity, 'sitioWeb'), 'Sitio web') }}  
+{% endblock %}
+
+{% macro fieldText(element, value, label) %}
+<div class="field-group">
+    <label for="tipddy_masleadsbundle_campanastype_{{ element }}" >{{ label }}</label>
+    <div class="field-wrapper">
+       {{ value }}
+   </div>
+</div>
+{% endmacro %}

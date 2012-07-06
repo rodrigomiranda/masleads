@@ -59,4 +59,12 @@ class Util
         
         return $usuario_url;
      }
+     
+     static public function getApiKey()
+     {
+         $fechaActual = date("d-m-Y h:i:s");
+         $keyApi = sha1($fechaActual.rand(11111, 99999));
+         
+         return $keyApi;
+     }
 }

@@ -1,0 +1,73 @@
+ {{ form_row(form.etiqueta,{'label' : 'Nombre'}) }}
+{# Fecha Inicio #}
+ {{ form_row(form.fechaInicio, {'attr' : { 'class' :'selects-fechas'}, 'label' : 'Fecha Inicio' }) }}
+
+ {{ form_row(form.fechaTermino, {'attr': { 'class' : 'selects-fechas' } , 'label' : 'Fecha Termino' }) }}
+ {{ form_row(form.industria, {'label' : 'Tipo Industria' }) }}
+ {{ form_row(form.periodoPrueba, {'label' : 'Periodo Prueba' }) }}
+ <div id="periodo-prueba" style="{{ entity.periodoPrueba == 0 ? 'display:none' : '' }}">
+ {{ form_row(form.fechaInicioPrueba, {'attr' : { 'class' : 'selects-fechas'}, 'label' : 'Fecha Inicio Prueba' }) }}
+ {{ form_row(form.fechaTerminoPrueba, {'attr' : { 'class' : 'selects-fechas'},  'label' : 'Fecha Término Prueba' }) }} 
+ </div>
+ {{ form_row(form.sitioWeb, {'label' : 'Sitio Web' }) }}
+ 
+ 
+ <div class="field-group">
+   <label class=" required" for="tipddy_masleadsbundle_campanastype_paginas">Páginas</label>
+   <div class="field-wrapper">
+      <div id="todas-paginas" data-prototype='
+          <table class="new-pages" id="tipddy_masleadsbundle_campanastype_paginas_$$name$$">
+             <tr>
+               <td>&nbsp</td>
+               <td>Nombre página</td>
+               <td>&nbsp</td>
+               <td>URL página</td>
+               <td>&nbsp</td>
+            </tr>   
+             <tr class="eliminar">
+               <td valign="top">&nbsp</td>
+               <td>{{ form_widget(form.paginas.get('prototype').etiqueta, { 'attr' : {'class' : 'campo_embed'}}) }}</td>
+               <td>&nbsp</td>
+               <td>{{ form_widget(form.paginas.get('prototype').url,  { 'attr' : {'class' : 'campo_embed'}}) }}</td>
+               <td class="aeliminar">&nbsp</td>
+             </tr>
+          </table>'>
+  
+   {% for pagina in form.paginas %}
+         <table class="new-pages" id="tipddy_masleadsbundle_campanastype_paginas_$$name$$">
+             <tr>
+               <td>&nbsp</td>
+               <td>Nombre página</td>
+               <td>&nbsp</td>
+               <td>URL página</td>
+               <td>&nbsp</td>
+            </tr>   
+             <tr class="eliminar">
+               <td valign="top">&nbsp</td>
+               <td>{{ form_widget(pagina.etiqueta, { 'attr' : {'class' : 'campo_embed'}}) }}</td>
+               <td>&nbsp</td>
+               <td>{{ form_widget(pagina.url,  { 'attr' : {'class' : 'campo_embed'}}) }} {{ form_widget(pagina.id) }}</td>
+               <td class="aeliminar">&nbsp</td>
+             </tr>
+          </table>
+   {% endfor %}
+ </ul>
+ 
+  
+  {#}    
+ <ul class="paginas" data-prototype="{{ form_widget(form.paginas.get('prototype')) | e}}">
+    {% for pagina in form.paginas %}
+     <li> {{ form_row(pagina) }}</li>    
+    {% endfor %}
+ </ul>
+ #}  
+      </div>
+   </div>
+     
+
+</div>
+
+
+
+{{ form_widget(form._token) }}
+{# {{ form_rest(form) }} #}          

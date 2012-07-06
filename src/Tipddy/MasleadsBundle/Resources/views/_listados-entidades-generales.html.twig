@@ -1,4 +1,4 @@
-<h1> {{ title }} <a class="button add-new-h2" href="{{ path(route ~ '_nuevo')}}">Nuevo</a></h1>
+<h1> {{ title }} <a class="button add-new-h2" href="{{ path(route ~ '_new')}}">Nuevo</a></h1>
 
 <table id="tabla-listado"  class="listado post fixed" cellspacing="0">
     <thead>
@@ -14,14 +14,20 @@
     {% for entity in pager.getResults %}
         <tr class="registro-fila {{ cycle(['tr-odd', 'tr-even'], loop.index)}}">
             <td>{{ cont }}</td>
-        {% for method in columns %}     
+        {% for method, type in columns %}     
              {% if (loop.index == 1) %}
                 <td>
-                  <strong>{{ attribute(entity, method) }}</strong>
-                     {% include 'TipddyMasleadsBundle::_acciones-listado.html.twig' with {'entity' : entity, 'route' : route, 'page' : pager.getPage } %}
+                   <strong>{{ attribute(entity, method) }}</strong>
+            
+                    {% include 'TipddyMasleadsBundle::_acciones-listado.html.twig' with {'entity' : entity, 'route' : route, 'page' : pager.getPage } %}
                 </td>
              {% else %}     
-                 <td>{{ attribute(entity, method) }}</td>
+                 {% if type == 'date' %}
+                  <td>{{ attribute(entity, method) | date('d-m-Y') }}</td>
+                 {% else %}
+                    <td>{{ attribute(entity, method) }}</td>
+                 {% endif %}      
+
              {% endif %}    
         {% endfor %}    
         </tr>
