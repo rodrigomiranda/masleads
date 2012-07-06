@@ -4,29 +4,29 @@ user:
     requirements:
        page: \d+
   
-user_ver:
-    pattern:  /{id}/ver
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:ver" }
+user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:show" }
 
-user_nuevo:
-    pattern:  /nuevo
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:nuevo" }
+user_new:
+    pattern:  /new
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:new" }
 
-user_crear:
-    pattern:  /crear
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:crear" }
+user_create:
+    pattern:  /create
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:create" }
     requirements: { _method: post }
 
-user_editar:
-    pattern:  /{id}/editar/{page}
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:editar", page:1 }
+user_edit:
+    pattern:  /{id}/edit/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:edit", page:1 }
 
-user_actualizar:
-    pattern:  /{id}/actualizar
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:actualizar" }
+user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:update" }
     requirements: { _method: post }
 
-user_borrar:
-    pattern:  /{id}/borrar
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:borrar" }
+user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:delete" }
     requirements: { _method: post }
