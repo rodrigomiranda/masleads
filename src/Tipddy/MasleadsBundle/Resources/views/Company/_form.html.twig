@@ -1,8 +1,7 @@
  {{ form_row(form.etiqueta, { 'label' : 'Nombre' })}}
  {{ form_row(form.rut)}}
  {{ form_row(form.giro)}}
- {{ form_row(form.direccion, { 'label' : 'Dirección'})}}
  {{ form_row(form.pais, { 'label' : 'País' }) }}
- {{ form_row(form.region, { 'label' : 'Región'}) }}
- {{ form_row(form.provincia) }}  
- {{ form_row(form.estado) }}
+ {{ form_row(form.direccion, { 'label' : 'Dirección'})}}
+ {{ form_row(form.estado, {'label' : 'Estado (Activo)'} )}}
+ {{ form_rest(form) }}

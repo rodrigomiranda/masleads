@@ -1,0 +1,14 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+{% import 'TipddyMasleadsBundle::_macro_field-text.html.twig' as field %}
+
+{% block content %}
+ <fieldset>
+ <legend>Visualizando Organización</legend> 
+  {{ field.fieldText('etiqueta', attribute(entity, 'etiqueta'), 'Nombre') }}
+  {{ field.fieldText('rut', attribute(entity, 'rut'), 'Rut') }}
+  {{ field.fieldText('giro', attribute(entity, 'giro'), 'Giro') }}   
+  {{ field.fieldText('pais', attribute(entity, 'pais'), 'País') }}
+  {{ field.fieldText('direccion', attribute(entity, 'direccion'), 'Dirección') }}      
+  {{ field.fieldText('estado', attribute(entity, 'nombreEstado'), 'Estado (Activo)') }}        
+  </fieldset>
+{% endblock %}

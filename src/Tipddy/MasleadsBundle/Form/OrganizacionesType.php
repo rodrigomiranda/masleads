@@ -14,10 +14,8 @@ class OrganizacionesType extends AbstractType
             ->add('rut')
             ->add('giro')
             ->add('direccion')
-            ->add('pais')
-            ->add('estado')
-            ->add('region')
-            ->add('provincia')
+            ->add('pais', null, array('empty_value' => 'Seleccione', 'required' => true))
+            ->add('estado', 'choice', array('choices' => array('0' => ' No', '1' => ' Si' ), 'required' => false, 'expanded' => true, 'multiple' => false))
         ;
     }
 

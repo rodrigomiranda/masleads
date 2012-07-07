@@ -5,8 +5,10 @@ company:
       page: \d+
    
 company_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:show" }
+    pattern:  /{id}/show/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:show", page: 1 }
+    requirements:
+        page: \d+
 
 company_new:
     pattern:  /new
@@ -18,13 +20,17 @@ company_create:
     requirements: { _method: post }
 
 company_edit:
-    pattern:  /{id}/edit
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:edit" }
+    pattern:  /{id}/edit/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:edit", page: 1 }
+    requirements:
+       page: \d+
 
 company_update:
-    pattern:  /{id}/update
-    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:update" }
-    requirements: { _method: post }
+    pattern:  /{id}/update/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Organizacion:update", page: 1 }
+    requirements:
+       _method: post
+       page: \d+
 
 company_delete:
     pattern:  /{id}/delete

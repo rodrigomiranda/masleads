@@ -21,12 +21,7 @@ class Paises
      */
     private $id;
     
-    
-    /**
-     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
-     */
-    private $nombre;
-
+   
    /** 
     * @ORM\Column(name="isonum", type="integer", length=6)
     */
@@ -44,6 +39,19 @@ class Paises
      *
      */
     private $iso3;
+    
+    
+    /**
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
+     */
+    private $nombre;
+   
+   
+   
+    public function __toString()
+    {
+	    return $this->getNombre();
+    } 
    
    
     /**
@@ -54,26 +62,6 @@ class Paises
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string 
-     */
-    public function getNombre()
-    {
-        return $this->nombre;
     }
 
     /**
@@ -134,5 +122,25 @@ class Paises
     public function getIso3()
     {
         return $this->iso3;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
     }
 }

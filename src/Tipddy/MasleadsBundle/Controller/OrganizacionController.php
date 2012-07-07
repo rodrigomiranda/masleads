@@ -31,9 +31,30 @@
        
        }
        
+       
+       public function showAction($id)
+       {
+          $em = $this->getDoctrine()->getEntityManager();
+          $entity = $em->getRepository('TipddyMasleadsBundle:Organizaciones')->find($id);
+          
+          if (!$entity) {
+	          throw $this->createNotFoundException('Unable to find register entity.');
+          }
+	       
+	      $form = $this->createForm(new OrganizacionesType(), $entity);
+	      
+          return $this->render('TipddyMasleadsBundle:Company:show.html.twig', array(
+          'entity'      => $entity,
+          'form'        => $form->createView(),
+          ));
+       }
+
+       
        public function newAction()
        {
           $entity = new Organizaciones();
+          
+          $entity->setEstado(0);
           
           $form = $this->createForm(new OrganizacionesType(), $entity);
           
@@ -73,5 +94,58 @@
                                ));  
 	      
       } 
+      
+      
+      public function editAction($id)
+      { 
+          $em = $this->getDoctrine()->getEntityManager();
+          $entity = $em->getRepository('TipddyMasleadsBundle:Organizaciones')->find($id);
+          
+          if (!$entity) {
+	          throw $this->createNotFoundException('Unable to find register entity.');
+          }
+          
+          $form = $this->createForm(new OrganizacionesType(), $entity);
+          
+          return $this->render('TipddyMasleadsBundle:Company:edit.html.twig', array(
+                               'entity' => $entity,
+                               'form' => $form->createView(),
+          ));
+	      
+      }
+      
+      
+      public function updateAction($id)
+      {
+         $em = $this->getDoctrine()->getEntityManager();
+         $entity = $em->getRepository('TipddyMasleadsBundle:Organizaciones')->find($id);
+         
+         if (!$entity) {
+	         throw $this->createNotFoundException('Unable to find register entity.');
+         }
+         
+         $request = $this->getRequest();
+         
+         $form = $this->createForm(new OrganizacionesType(), $entity);
+         
+	     $form->bindRequest($request);
+	     
+	     if ($form->isValid()) {
+		     $em->persist($entity);
+		     $em->flush();
+	      
+	         $this->get('session')->setFlash('result_action', 'ok_save');
+		   
+		     return $this->redirect($this->generateUrl('company_edit', array('id'=> $entity->getId())));			      
+		      
+	      } else {
+		      $this->get('session')->setFlash('result_action', 'error');		      
+	      }    
+
+	      return $this->render('TipddyMasleadsBundle:Company:edit.html.twig', array(
+                               'entity' => $entity,
+                               'form' => $form->createView(),
+          ));	      
+      }
    
    } 

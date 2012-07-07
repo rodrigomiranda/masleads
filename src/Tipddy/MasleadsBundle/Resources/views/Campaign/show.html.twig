@@ -17,6 +17,8 @@
      {{ _self.fieldText('fechaTerminoPrueba', attribute(entity, 'fechaTerminoPrueba') | date('d-m-Y'), 'Fecha termino prueba') }}  
   {% endif %}
    {{ _self.fieldText('sitioWeb', attribute(entity, 'sitioWeb'), 'Sitio web') }}  
+   
+ </fieldset>
 {% endblock %}
 
 {% macro fieldText(element, value, label) %}

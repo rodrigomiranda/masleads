@@ -56,10 +56,9 @@ class Organizaciones
 
   
     /**
-     * 
      * @ORM\ManyToOne(targetEntity="Paises")
      * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="pais_id",    referencedColumnName="id")
+     * @ORM\JoinColumn(name="pais_id", referencedColumnName="id", nullable=false)
      * })
      */
     private $pais;
@@ -71,26 +70,7 @@ class Organizaciones
      */
     private $estado;
 
-    /**
-     * @var Regiones
-     *
-     * @ORM\ManyToOne(targetEntity="Regiones")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="region", referencedColumnName="id")
-     * })
-     */
-    private $region;
-
-    /**
-     * @var Provincias
-     *
-     * @ORM\ManyToOne(targetEntity="Provincias")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="provincia", referencedColumnName="id")
-     * })
-     */
-    private $provincia;
-
+    
 
 
     public function __toString()
@@ -230,43 +210,12 @@ class Organizaciones
         return $this->estado;
     }
 
-    /**
-     * Set region
-     *
-     * @param Tipddy\MasleadsBundle\Entity\Regiones $region
-     */
-    public function setRegion(\Tipddy\MasleadsBundle\Entity\Regiones $region)
+
+    public function getNombreEstado()
     {
-        $this->region = $region;
+	    return $this->getEstado() == 0 ? 'Desactiva' : 'Activa';
+	    
     }
 
-    /**
-     * Get region
-     *
-     * @return Tipddy\MasleadsBundle\Entity\Regiones 
-     */
-    public function getRegion()
-    {
-        return $this->region;
-    }
 
-    /**
-     * Set provincia
-     *
-     * @param Tipddy\MasleadsBundle\Entity\Provincias $provincia
-     */
-    public function setProvincia(\Tipddy\MasleadsBundle\Entity\Provincias $provincia)
-    {
-        $this->provincia = $provincia;
-    }
-
-    /**
-     * Get provincia
-     *
-     * @return Tipddy\MasleadsBundle\Entity\Provincias 
-     */
-    public function getProvincia()
-    {
-        return $this->provincia;
-    }
-}
+ }
