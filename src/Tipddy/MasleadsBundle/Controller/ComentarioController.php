@@ -22,25 +22,21 @@
           $pager = new Pager($adapter, array('page' => $page, 'limit' => $this->container->getParameter('tipddy.registers_by_pages')));
           
           
-          return $this->render('TipddyMasleadsBundle:Comentario:index.html.twig', array(
+          return $this->render('TipddyMasleadsBundle:Comment:index.html.twig', array(
                                'pager' => $pager
           ));
        
        }
        
-       public function nuevoAction()
+       public function newAction()
        {
           $entity = new CampanasSeguimientoRespuestas();
           
           $form = $this->createForm(new CampanasSeguimientoRespuestasType(), $entity);
           
-          return $this->render('TipddyMasleadsBundle:Comentario:nuevo.html.twig', array(
+          return $this->render('TipddyMasleadsBundle:Comment:new.html.twig', array(
                                'entity' => $entity,
                                'form' => $form->createView(),
           ));
-       
-       
        }
-       
-  
   }

@@ -1,5 +1,4 @@
-<h1> {{ title }} <a class="button add-new-h2" href="{{ path(route ~ '_new')}}">Nuevo</a></h1>
-
+<h1> {{ title }} {% if (route !="comment") %} <a class="button add-new-h2" href="{{ path(route ~ '_new')}}">Nuevo</a>{% endif %}</h1>
 <table id="tabla-listado"  class="listado post fixed" cellspacing="0">
     <thead>
         <tr>

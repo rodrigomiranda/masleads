@@ -7,14 +7,13 @@
 
 {% block content %}
 
-<form action="{{ path('usuario_actualizar', {'id' : entity.id })}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+<form action="{{ path('user_update', {'id' : entity.id })}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
  <fieldset>
  <legend>Editar Usuario</legend> 
-  {{ form_row(form.apiKey) }}
-  {% include 'TipddyMasleadsBundle:Usuario:_form.html.twig' %}
+    {% include 'TipddyMasleadsBundle:User:_form.html.twig' %}
  </fieldset>
  
-{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Guardar', 'route':'usuario'} only %} 
+{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Guardar', 'route':'user'} only %} 
 
 </form>
  

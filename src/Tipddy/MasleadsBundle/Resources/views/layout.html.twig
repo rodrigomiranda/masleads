@@ -4,12 +4,16 @@
 <script type="text/javascript" src="{{ asset('public/js/jquery-1.7.2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('public/js/blockUI/jquery.blockUI.js') }}"></script>
 
-{% if app.session.hasFlash('result_action') %}
+{% if app.session.hasFlash('result_action')  %}
       {% if app.session.getFlash('result_action') == 'error' %}
           {% set titleAction, msjAction, prefImage = global.form_title_action_error, global.form_msj_action_error, 'error' %}
-      {% else %}
+      {% elseif app.session.getFlash('result_action') == 'ok_select'  %}
           {% set titleAction, prefImage = global.form_title_action_ok, 'ok' %}  
-          {% set msjAction = app.session.getFlash('result_action') == 'ok_save' ? global.form_msj_action_ok_save : global.form_msj_action_ok_update  %} 
+          {% set msjAction = global.msj_action_ok_select %} 
+          
+       {% else %}
+          {% set titleAction, prefImage = global.form_title_action_ok, 'ok' %}  
+          {% set msjAction = app.session.getFlash('result_action') == 'ok_save' ? global.form_msj_action_ok_save : global.form_msj_action_ok_update  %}    
       {% endif %}
       {# growlUI #}
       <script type="text/javascript">

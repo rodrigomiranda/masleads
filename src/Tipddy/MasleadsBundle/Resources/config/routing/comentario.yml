@@ -1,34 +1,44 @@
-comentario:
+comment:
    pattern: /{page}
-   defaults: { _controller:TipddyMasleadsBundle:Comentario:index, page: 1 }
+   defaults: { _controller:"TipddyMasleadsBundle:Comentario:index", page: 1 }
    requirements:
       page: \d+
       
-comentario_ver:
-    pattern:  /{id}/ver
-    defaults: { _controller: "TipddyMasleadsBundle:Comentario:ver" }
+comment_show:
+    pattern:  /{id}/show/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:show", page: 1 }
+    requirements:
+        page: \d+
+        id: \d+
 
-comentario_nuevo:
-    pattern:  /nuevo
-    defaults: { _controller: "TipddyMasleadsBundle:Comentario:nuevo" }
+comment_new:
+    pattern:  /new
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:new" }
 
-comentario_crear:
-    pattern:  /crear
-    defaults: { _controller: "TipddyMasleadsBundle:Comentario:crear" }
+comment_create:
+    pattern:  /create
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:create" }
     requirements: { _method: post }
 
-comentario_editar:
-    pattern:  /{id}/editar
-    defaults: { _controller: "TipddyMasleadsBundle:Comentario:editar" }
+comment_edit:
+    pattern:  /{id}/edit/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:edit", page: 1 }
+    requirements:
+        id: \d+
+        page: \d+
 
-comentario_actualizar:
-    pattern:  /{id}/actualizar
-    defaults: { _controller: "TipddyMasleadsBundle:Comentario:actualizar" }
-    requirements: { _method: post }
+comment_update:
+    pattern:  /{id}/update/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:actualizar", page: 1 }
+    requirements:
+        _method: post
+        id: \d+
+        page: \d+
 
-comentario_borrar:
-    pattern:  /{id}/borrar
-    defaults: { _controller: "TipddyMasleadsBundle:Comentario:borrar" }
-    requirements: { _method: post }
-
-  
+comment_delete:
+    pattern:  /{id}/delete/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Comentario:delete", page: 1 }
+    requirements: 
+        _method: post
+        id: \d+
+        page: \d+

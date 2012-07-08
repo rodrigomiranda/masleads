@@ -2,9 +2,9 @@ TipddyMasleadsBundle_login:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/login.yml"
     prefix: /
     
-TipddyMasleadsBundle_panel:
+TipddyMasleadsBundle_dashboard:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/panel.yml"
-    prefix: /panel     
+    prefix: /dashboard     
 
 TipddyMasleadsBundle_campaign:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/campana.yml"
@@ -19,9 +19,9 @@ TipddyMasleadsBundle_company:
     prefix: /company       
 
 
-TipddyMasleadsBundle_comentario:
+TipddyMasleadsBundle_comment:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/comentario.yml"
-    prefix: /comentario     
+    prefix: /comment     
     
 TipddyMasleadsBundle_ajax:
     resource: "@TipddyMasleadsBundle/Resources/config/routing/ajax.yml"

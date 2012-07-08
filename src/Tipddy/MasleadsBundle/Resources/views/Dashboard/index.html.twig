@@ -3,7 +3,7 @@
 {% block submenuprincipal %} {% include "TipddyMasleadsBundle::_submenu-principal-panel.html.twig" %} {% endblock %}
 
 {% block content %}
- <form id="new-list" method="post" action="">
+ <form id="new-list" method="post" action="{{ path('dashboard_select') }}">
   <fieldset>
      <legend>Seleccionar Organización</legend>  
      <div class="field-group">
@@ -12,9 +12,9 @@
           <span class="asterisk">*</span>  
         </label>
         <div class="field-wrapper">
-          <select id="organizacion" name="organizacion">
+          <select id="company" name="company">
      {% for organizacion in organizaciones %}     
-            <option value="{{ organizacion.id }}">{{ organizacion.etiqueta}}</option>
+            <option value="{{ organizacion.id }}" {{ organizacion.id == app.session.get('organizacion_id') ? 'selected' : '' }}>{{ organizacion.etiqueta}}</option>
   
      {% else %}
          <option value="">No hay organizaciones</option>

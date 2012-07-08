@@ -41,11 +41,6 @@ class CampanaController extends Controller
 	   $entity = new Campanas();
 	   
 	   $pagina1 = new CampanasSeguimientoPaginas();
-	 /*  $pagina1->setEtiqueta('bienvenida');
-	   $pagina1->setUrl('http://www.tipddy.cl/bienvenida');
-	   
-	   $entity->addCampanasSeguimientoPaginas($pagina1);
-	   */
 	   
 	   $entity->setPeriodoPrueba(0);
 	   $form = $this->createForm(new CampanasType(), $entity);

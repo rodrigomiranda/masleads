@@ -5,9 +5,12 @@ user:
        page: \d+
   
 user_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:show" }
-
+    pattern:  /{id}/show/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:show", page: 1 }
+    requirements:
+        id: \d+
+        page: \d+
+  
 user_new:
     pattern:  /new
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:new" }
@@ -20,13 +23,22 @@ user_create:
 user_edit:
     pattern:  /{id}/edit/{page}
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:edit", page:1 }
+    requirements:
+        id: \d+
+        page: \d+
 
 user_update:
-    pattern:  /{id}/update
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:update" }
-    requirements: { _method: post }
-
+    pattern:  /{id}/update/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:update", page: 1 }
+    requirements:
+         _method: post
+         id: \d+
+         page: \d+
+         
 user_delete:
-    pattern:  /{id}/delete
-    defaults: { _controller: "TipddyMasleadsBundle:Usuario:delete" }
-    requirements: { _method: post }
+    pattern:  /{id}/delete/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Usuario:delete", page: 1 }
+    requirements:
+        _method: post
+        id: \d+
+        page: \d+ 

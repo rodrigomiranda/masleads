@@ -1,3 +1,10 @@
-panel:
+dashboard:
   pattern: /
-  defaults: { _controller: TipddyMasleadsBundle:Panel:index } 
+  defaults: { _controller: "TipddyMasleadsBundle:Panel:index" } 
+   
+dashboard_select:
+  pattern: /select/
+  defaults: { _controller: "TipddyMasleadsBundle:Panel:select" } 
+  requirements:
+        _method: post
+      
