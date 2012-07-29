@@ -1,5 +1,5 @@
 |
-<span class="topBarElem">!Hola, Rodrigo Miranda</span> |<span> Tipo Usuario: Admin</span> |<span> Organización:  Tipddy</span>
+<span class="topBarElem">!Hola, {{ app.user }}</span> |<span> Tipo Usuario: {{ app.user.tipoUsuario }}</span> |<span> Organización:  {{ app.user.organizacion }}</span>
 <span class="topBarElem">
- | <a href="">Desconectar</a>
+ | <a href="{{ path('logout') }}">Desconectar</a>
 </span>

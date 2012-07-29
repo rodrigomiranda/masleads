@@ -36,6 +36,13 @@ class TiposUsuarios
     private $descripcion;
 
 
+    /**
+     * @ORM\Column(name="role", type="string", length=255, nullable=false)
+     *
+     */
+    private $role;
+    
+
 
     public function __toString()
     {
@@ -91,5 +98,25 @@ class TiposUsuarios
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }

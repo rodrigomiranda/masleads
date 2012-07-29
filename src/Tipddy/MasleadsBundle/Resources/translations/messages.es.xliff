@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="es" datatype="plaintext" original="file.ext">
+        <body>
+           <trans-unit id="1">
+                <source>The presented password cannot be empty.</source>
+                <target>Por favor ingrese un password.</target>
+            </trans-unit>
+           <trans-unit id="2">
+                <source>Bad credentials</source>
+                <target>Errores de acceso.</target>
+           </trans-unit>  
+            <trans-unit id="3">
+                <source>The presented password is invalid.</source>
+                <target>El password es incorrecto.</target>
+           </trans-unit>  
+        </body>
+    </file>
+</xliff>

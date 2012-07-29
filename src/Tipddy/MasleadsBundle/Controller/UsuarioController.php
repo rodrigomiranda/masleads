@@ -19,8 +19,10 @@
        {
           
           $em = $this->getDoctrine()->getEntityManager();
-                    
-          $queryOrmAdapter = $em->getRepository('TipddyMasleadsBundle:Usuarios')->buildQueryOrmAdapter();
+          
+          $idOrganizacion = $this->get('session')->get('organizacion_id');
+          
+          $queryOrmAdapter = $em->getRepository('TipddyMasleadsBundle:Usuarios')->buildQueryOrmAdapter($idOrganizacion);
           
           $adapter = new DoctrineOrmAdapter($queryOrmAdapter);
           
@@ -65,15 +67,10 @@
             $password = $code->encodePassword($usuario->getPassword(), $usuario->getSalt());
             
             $usuario->setPassword($password);
-            
-            //session usuario del sistema
-            //$user = $this->get('security.context')->getToken()->getUser();
-            $organizacion = $em->getRepository('TipddyMasleadsBundle:Organizaciones')->find(1);
-            
-           // $usuario->setOrganizacion($user->getOrganizacion());
            
-            $usuario->setOrganizacion($organizacion);
-            
+            $tokenUser = $this->get('security.context')->getToken()->getUser(); 
+            $usuario->setOrganizacion($tokenUser->getOrganizacion());
+                       
             $em->persist($usuario);
             
             $em->flush();
@@ -99,7 +96,13 @@
       {
          $em = $this->getDoctrine()->getEntityManager();
          
-         $entity = $em->getRepository('TipddyMasleadsBundle:Usuarios')->find($id);
+         $idOrganizacion = $this->get('session')->get('organizacion_id');
+         
+         $entity = $em->getRepository('TipddyMasleadsBundle:Usuarios')->findOneBy(array(
+                                       'id' => $id,
+                                       'organizacion' => $idOrganizacion         
+         ));
+         
          
          if (!$entity) {         
            throw $this->createNotFoundException('Unable to find register');         
@@ -115,10 +118,38 @@
       
       }
       
+      public function showAction($id)
+      {
+         $em = $this->getDoctrine()->getEntityManager();
+         $idOrganizacion = $this->get('session')->get('organizacion_id');
+         
+                 
+         $usuario = $em->getRepository('TipddyMasleadsBundle:Usuarios')->findOneBy(array(
+                                      'id' => $id,
+                                      'organizacion' => $idOrganizacion        
+                  ));
+	      
+	      if (!$usuario) {
+		      throw $this->createNotFoundException('Unable to find register');
+	      }
+	      
+	      $showForm = $this->createForm(new ,$);
+	      
+	      
+      }
+      
+      
+      
       public function updateAction($id)
       {
           $em = $this->getDoctrine()->getEntityManager();
-          $usuario = $em->getRepository('TipddyMasleadsBundle:Usuarios')->find($id);
+          
+          $idOrganizacion = $this->get('session')->get('organizacion_id');
+          
+          $usuario = $em->getRepository('TipddyMasleadsBundle:Usuarios')->findOneBy(array(
+                                        'id' => $id,
+                                        'organizacion' => $idOrganizacion
+                                        ));
           
           if (!$usuario) {
              throw $this->createNotFoundException('Unable to find register');          

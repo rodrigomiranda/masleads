@@ -6,19 +6,25 @@ security:
              form_login: 
                 login_path: login
                 check_path: login_check
+                always_use_default_target_path: true
+                default_target_path: /dashboard
+             logout:
+                path: /logout
+                target: / 
              
     access_control:
-#       - { path: ^/panel , roles: [ROLE_TIPDDY, ROLE_ADMIN, ROLE_GERENTE, ROLE_VENDEDOR] } 
-#       - { path: ^/campana , roles: [ROLE_TIPDDY, ROLE_ADMIN, ROLE_GERENTE, ROLE_VENDEDOR] }        
-#       - { path: ^/usuario , roles: [ROLE_TIPDDY, ROLE_ADMIN] }
-#       - { path: ^/organizacion , roles: ROLE_TIPDDY }
-#       - { path: ^/comentario , roles: ROLE_TIPDDY }           
-        
+       - { path: ^/dashboard , roles: [ROLE_TIPDDY, ROLE_ADMIN, ROLE_GERENTE, ROLE_VENDEDOR] } 
+       - { path: ^/campaign , roles: [ROLE_TIPDDY, ROLE_ADMIN, ROLE_GERENTE, ROLE_VENDEDOR] }        
+       - { path: ^/user , roles: [ROLE_TIPDDY, ROLE_ADMIN] }
+       - { path: ^/company , roles: ROLE_TIPDDY }
+       - { path: ^/comment , roles: ROLE_TIPDDY }           
+              
+    encoders:
+       Tipddy\MasleadsBundle\Entity\Usuarios:
+           algorithm: sha512
+           iterations: 1 
+       
     providers:
        usuarios:
           entity: { class: Tipddy\MasleadsBundle\Entity\Usuarios, property: login }
           
-          
-    encoders:
-   #    Tipddy\MasleadsBundle\Entity\Usuarios: plaintext
-      Tipddy\MasleadsBundle\Entity\Usuarios: { algorithm: sha512, iterations: 10} 

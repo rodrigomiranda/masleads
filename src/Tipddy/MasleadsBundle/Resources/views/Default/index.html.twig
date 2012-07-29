@@ -8,6 +8,11 @@
 {% block body %}
 <div id="login">
     <h1><img src="{{ asset('bundles/tipddymasleads/images/logo-masleads.png') }}" /></h1>
+    
+    {% if error %}
+      <div id="login_error">{{ error.message | trans }}</div>
+    {% endif %}
+    
     <form id="login-form" action="{{ path('login_check')}}" method="post">
      
      <p>
@@ -21,12 +26,12 @@
              <input type="password" name="_password" id="input_password" />          </label>
       </p>    
       <p  class="submit">
-          <button  name="enviarFormulario">Iniciar Sesión</button>
+          <button type="submit" name="enviarFormulario">Iniciar Sesión</button>
       </p>
-      <input type="hidden" name="usuarios[id]" id="usuarios_id" />
+  
    </form>
     <p id="nav">        
-        <a class="iframe" href="/login/recuperacionClave" title="Recuperación de Contraseña Pérdida">¿Ólvido su Contraseña?</ a>
+        <a class="iframe" href="/login/recuperacionClave" title="Recuperación de Contraseña Pérdida">¿Ólvido su Contraseña?</a>
     </p>
 </div>
 

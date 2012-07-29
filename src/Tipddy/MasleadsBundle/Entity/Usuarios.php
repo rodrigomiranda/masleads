@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * @ORM\Entity(repositoryClass="Tipddy\MasleadsBundle\Entity\UsuariosRepository")
  * @DoctrineAssert\UniqueEntity("login")
  */
-class Usuarios implements UserInterface
+class Usuarios implements UserInterface,  \Serializable
 {	
     /**
      * @var bigint $id
@@ -60,7 +60,7 @@ class Usuarios implements UserInterface
     /**
      * @var string $password
      *
-     * @ORM\Column(name="password", type="string", length=50, nullable=true)
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
      * @Assert\MinLength(6)
      */
     private $password;
@@ -202,6 +202,17 @@ class Usuarios implements UserInterface
 
 
 
+    public function serialize()
+    {
+       return serialize($this->getId());
+    }
+ 
+    public function unserialize($data)
+    {
+        $this->id = unserialize($data);
+    }
+
+
     public function __toString()
     {
       return $this->getNombreCompleto();
@@ -214,7 +225,8 @@ class Usuarios implements UserInterface
      */
      public function getRoles()
      {
-        return array($this->tipoUsuario);
+       // return array($this->tipoUsuario->getRole());
+        return array('ROLE_TIPDDY');
      }
     
      public function getSalt()
@@ -234,24 +246,12 @@ class Usuarios implements UserInterface
     
      public function equals(UserInterface $user)
      {
-        return $user->getUsername() == $this->getUsername();
-     }
-        
-        
-     public function serialize()
-     {
-        return serialize(array(
-                           $this->getNick()
-                        ));
-     }
-    
-     public function unserialize($serialized)
-     {
-        $arr = unserialize($serialized);
-        $this->setNick($arr[0]);
+        return $user->getLogin() == $this->getLogin();
      }
       
-
+        
+  
+      
 
     /**
      * Get id

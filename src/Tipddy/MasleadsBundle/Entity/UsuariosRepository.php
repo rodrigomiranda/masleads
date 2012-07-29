@@ -6,17 +6,20 @@
  
  class UsuariosRepository extends EntityRepository 
  {
-       public function buildQueryOrmAdapter()
+       public function buildQueryOrmAdapter($idOrganizacion)
        {
           $em = $this->getEntityManager();
           
           $query = $em->createQueryBuilder()
                         ->select('o')
                         ->from('TipddyMasleadsBundle:Usuarios', 'o')
-                        ->orderBy('o.id', 'DESC'); 
-       
+                        ->where('o.organizacion = :idOrganizacion')
+                        ->orderBy('o.id', 'DESC')                                                
+                        ->setParameter('idOrganizacion', $idOrganizacion);
+                        
           return $query;
        
        }
+      
  
  }
