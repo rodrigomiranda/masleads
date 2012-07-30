@@ -13,7 +13,7 @@
           $query = $em->createQueryBuilder()
                         ->select('o')
                         ->from('TipddyMasleadsBundle:Organizaciones', 'o')
-                        ->orderBy('o.id', 'DESC'); 
+                        ->orderBy('o.id', 'DESC');
        
           return $query;
        

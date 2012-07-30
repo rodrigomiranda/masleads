@@ -3,6 +3,7 @@
 namespace Tipddy\MasleadsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tipddy\MasleadsBundle\Entity\EnviosInformacion
@@ -25,6 +26,9 @@ class EnviosInformacion
      * @var text $informacion
      *
      * @ORM\Column(name="informacion", type="text", nullable=false)
+     * @Assert\Notblank()
+     * @Assert\MinLength(6)
+     * 
      */
     private $informacion;
 

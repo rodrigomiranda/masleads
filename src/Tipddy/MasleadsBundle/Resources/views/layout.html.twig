@@ -3,6 +3,32 @@
 {% block javascripts %}
 <script type="text/javascript" src="{{ asset('public/js/jquery-1.7.2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('public/js/blockUI/jquery.blockUI.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/jquery.mousewheel-3.0.6.pack.js') }}"></script>
+<!-- Add fancybox -->
+<link rel="stylesheet" href="{{ asset('public/js/fancybox/jquery.fancybox.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ asset('public/js/fancybox/jquery.fancybox.pack.js') }}"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="{{ asset('public/js/fancybox/helpers/jquery.fancybox-buttons.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ asset('public/js/fancybox/helpers/jquery.fancybox-buttons.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/fancybox/helpers/jquery.fancybox-media.js') }}"></script>
+
+<link rel="stylesheet" href="{{ asset('public/js/fancybox/helpers/jquery.fancybox-thumbs.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ asset('public/js/fancybox/helpers/jquery.fancybox-thumbs.js') }}"></script>
+
+<script type="text/javascript">
+     $(document).ready(function($) {
+       $("a.iframe-header").fancybox({
+	     'hideOnContentClick': false,
+             'autoScale' : true,
+             'type': 'iframe',
+             'width': '50%',
+             'height': '100%',
+             'scrolling': 'no'             
+        });
+   })
+</script>   
+   
 
 {% if app.session.hasFlash('result_action')  %}
       {% if app.session.getFlash('result_action') == 'error' %}

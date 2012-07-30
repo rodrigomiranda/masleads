@@ -1,7 +1,7 @@
 {% extends 'TipddyMasleadsBundle::layout.html.twig' %}
 
 {% block content %}
-
+<form>
  <fieldset>
  <legend>Visualizando Campaña</legend> 
  
@@ -19,6 +19,8 @@
    {{ _self.fieldText('sitioWeb', attribute(entity, 'sitioWeb'), 'Sitio web') }}  
    
  </fieldset>
+ {% include 'TipddyMasleadsBundle::_boton-volver.html.twig' with {'route':'campaign', 'page' : page } only %} 
+</form>
 {% endblock %}
 
 {% macro fieldText(element, value, label) %}

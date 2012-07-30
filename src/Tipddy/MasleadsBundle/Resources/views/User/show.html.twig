@@ -1,0 +1,44 @@
+{% extends 'TipddyMasleadsBundle::layout.html.twig' %}
+
+{% block content %}
+
+<form>
+ <fieldset>
+ <legend>Visualizando Usuario</legend> 
+ 
+  {{ _self.fieldText('nombre', attribute(entity, 'nombre'), 'Nombre') }}
+  {{ _self.fieldText('apellido', attribute(entity, 'apellido'), 'Apellido') }}
+  {{ _self.fieldText('rut', attribute(entity, 'rut'), 'Rut') }}
+  {{ _self.fieldText('empresa', attribute(entity, 'empresa'), 'Empresa') }}
+  {{ _self.fieldText('cargo', attribute(entity, 'cargo'), 'Cargo') }}
+  {{ _self.fieldText('profesion', attribute(entity, 'profesion'), 'Profesión') }}  
+  {{ _self.fieldText('especialidad', attribute(entity, 'especialidades'), 'Especialidad') }}  
+  {{ _self.fieldText('email', attribute(entity, 'email'), 'Email') }}  
+  {{ _self.fieldText('email2', attribute(entity, 'email2'), 'Email2') }}    
+  {{ _self.fieldText('login', attribute(entity, 'login'), 'Login') }}
+  {{ _self.fieldText('rol', attribute(entity, 'tipoUsuario'), 'Rol') }} 
+  {{ _self.fieldText('codigo_postal', attribute(entity, 'codigoPostal'), 'Código Postal') }}
+  {{ _self.fieldText('direccion', attribute(entity, 'direccion'), 'Dirección') }}
+  {{ _self.fieldText('region', attribute(entity, 'region'), 'Región') }}    
+  {{ _self.fieldText('comuna', attribute(entity, 'comuna'), 'Comuna') }}  
+  {{ _self.fieldText('telefono', attribute(entity, 'telefono'), 'Teléfono') }}
+  {{ _self.fieldText('telefono_2', attribute(entity, 'telefono2'), 'Teléfono 2') }}      
+  {{ _self.fieldText('celular', attribute(entity, 'celular'), 'Celular') }}    
+  {{ _self.fieldText('pagina_web', attribute(entity, 'paginaWeb'), 'Página Web') }}
+  
+  
+   
+ </fieldset>
+{% include 'TipddyMasleadsBundle::_boton-volver.html.twig' with {'route':'user', 'page' : page } only %} 
+</form>
+
+{% endblock %}
+
+{% macro fieldText(element, value, label) %}
+<div class="field-group">
+    <label for="tipddy_masleadsbundle_usuariostype_{{ element }}" >{{ label }}</label>
+    <div class="field-wrapper">
+       {{ value }}
+   </div>
+</div>
+{% endmacro %}

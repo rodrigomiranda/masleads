@@ -12,14 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class CampanasRepository extends EntityRepository
 {
-    public function buildQueryOrmAdapter()
+    public function buildQueryOrmAdapter($idOrganizacion)
     {
         $em = $this->getEntityManager();
           
         $query = $em->createQueryBuilder()
                         ->select('c')
                         ->from('TipddyMasleadsBundle:Campanas', 'c')
-                        ->orderBy('c.id', 'DESC'); 
+                        ->where('c.organizacion = :idOrganizacion')
+                        ->orderBy('c.id', 'DESC')
+                        ->setParameter('idOrganizacion', $idOrganizacion);
        
          return $query;
        

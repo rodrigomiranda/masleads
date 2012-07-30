@@ -6,5 +6,9 @@
    <span class="edit">
      <a href="{{ path( route ~ '_edit', {'id': entity.id, 'page': page})}}">Editar</a>
    </span>
+   |     
+   <span class="edit">
+     <a href="{{ path( route ~ '_delete', {'id': entity.id, 'page': page})}}" onclick="return confirm('Realmente deseas borrar el registro?')">Borrar</a>
+   </span>
 
 </div>

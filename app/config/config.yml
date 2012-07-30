@@ -37,6 +37,7 @@ twig:
             form_msj_action_ok_save: "El registro ha sido creado."
             form_msj_action_ok_update: "El registro ha sido actualizado."  
             msj_action_ok_select: "Ha ingresado al entorno de la organización elegida."
+            msj_action_ok_envio_comentario: "Se ha enviado el mensaje, hoy vamos a contestar. Gracias!!!"
          
           
 # Assetic Configuration

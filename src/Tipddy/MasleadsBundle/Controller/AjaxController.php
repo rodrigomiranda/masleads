@@ -3,6 +3,9 @@ namespace Tipddy\MasleadsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Tipddy\MasleadsBundle\Entity\EnviosInformacion;
+use Tipddy\MasleadsBundle\Form\EnviosInformacionType;
+
 
 class AjaxController extends Controller
 {
@@ -27,4 +30,48 @@ class AjaxController extends Controller
         
         }
     }
+    
+    public function sendinformationAction()
+    {
+       $entity =  new EnviosInformacion();
+       
+       $form = $this->createForm(new EnviosInformacionType(), $entity);
+       
+       return $this->render('TipddyMasleadsBundle:Ajax:sendinformation.html.twig', array(
+                            'entity' => $entity,
+                            'form'   => $form->createView()
+       )); 
+    }    
+    
+    
+    public function createinformationAction()
+    {
+	    $entity = new EnviosInformacion();
+	    $form = $this->createForm(new EnviosInformacionType(), $entity);
+	    $request = $this->getRequest();
+	    
+	    $form->bindRequest($request);
+	    
+	    if ($form->isValid()) {
+		    $em = $this->getDoctrine()->getEntityManager();
+		    
+		    $token = $this->get('security.context')->getToken()->getUser();
+		    
+		    $entity->setUsuario($token);
+		    $em->persist($entity);
+		    $em->flush();
+		    
+		    $this->get('session')->setFlash('result_action', 'ok');
+		    
+		    return $this->redirect($this->generateUrl('callajax_sendinf'));		    
+	    }
+	    
+	      
+       return $this->render('TipddyMasleadsBundle:Ajax:sendinformation.html.twig', array(
+                            'entity' => $entity,
+                            'form'   => $form->createView()
+                            ));
+	    
+       }
+    
 }

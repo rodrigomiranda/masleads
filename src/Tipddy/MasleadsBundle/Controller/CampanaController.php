@@ -22,7 +22,9 @@ class CampanaController extends Controller
     {
       $em = $this->getDoctrine()->getEntityManager();
          
-      $queryOrmAdapter = $em->getRepository('TipddyMasleadsBundle:Campanas')->buildQueryOrmAdapter();
+      $idOrganizacion = $this->get('session')->get('organizacion_id');
+      
+      $queryOrmAdapter = $em->getRepository('TipddyMasleadsBundle:Campanas')->buildQueryOrmAdapter($idOrganizacion);
           
       $adapter = new DoctrineOrmAdapter($queryOrmAdapter);
           
@@ -64,12 +66,15 @@ class CampanaController extends Controller
 		   
 		   $entity->setApiKey(Util::getApiKey());
 		   
+		   $tokenUser = $this->get('security.context')->getToken()->getUser(); 
+           $entity->setOrganizacion($tokenUser->getOrganizacion());
 		   //paginas
 		   $collection = $entity->getPaginas();
 		   
 		   foreach ($collection as $item) {
 		      $item->setCampana($entity);
 		   }
+		   
 		   
 		   $em->persist($entity);
 		   
@@ -90,7 +95,7 @@ class CampanaController extends Controller
    }
    
    
-   public function showAction($id)
+   public function showAction($id, $page)
    {
       
       $arr = $this->showEdit($id);            
@@ -100,12 +105,12 @@ class CampanaController extends Controller
        return $this->render('TipddyMasleadsBundle:Campaign:show.html.twig', array(
           'entity'      => $entity,
           'form'        => $showForm->createView(),
-        //  'delete_form' => $deleteForm->createView(),
+          'page'        => $page       
        ));
 	   
    }
    
-   public function editAction($id)
+   public function editAction($id, $page)
    {
 	  $arr = $this->showEdit($id);            
       $entity = $arr[0]; 
@@ -114,6 +119,7 @@ class CampanaController extends Controller
        return $this->render('TipddyMasleadsBundle:Campaign:edit.html.twig', array(
           'entity'      => $entity,
           'form'        => $form->createView(),
+          'page'        => $page
        ));
    }
    
@@ -121,8 +127,12 @@ class CampanaController extends Controller
    public function showEdit($id)
    {
 	   $em = $this->getDoctrine()->getEntityManager();
+	   $idOrganizacion = $this->get('session')->get('organizacion_id');
 	   
-	   $entity = $em->getRepository('TipddyMasleadsBundle:Campanas')->find($id);
+	   $entity = $em->getRepository('TipddyMasleadsBundle:Campanas')->findOneBy(array(
+	                                'id' => $id,
+	                                'organizacion' => $idOrganizacion 
+	   ));
 	   
 	   if (!$entity) {
 		   
@@ -136,11 +146,15 @@ class CampanaController extends Controller
 	   
    }
    
-   public function updateAction($id)
+   public function updateAction($id, $page)
    {
 	   $em = $this->getDoctrine()->getEntityManager();
+	   $idOrganizacion = $this->get('session')->get('organizacion_id');
 	   
-	   $entity = $em->getRepository('TipddyMasleadsBundle:Campanas')->find($id);
+	   $entity = $em->getRepository('TipddyMasleadsBundle:Campanas')->findOneBy(array(
+	                                'id' => $id,
+	                                'organizacion' => $idOrganizacion
+	   ));
 	 
 	   if (!$entity) {
 		   throw $this->createNotFoundException("Unable to find register entity.");
@@ -171,7 +185,7 @@ class CampanaController extends Controller
 		
 		   $this->get('session')->setFlash('result_action', 'ok_update');
 		   
-		   return $this->redirect($this->generateUrl('campaign_edit', array('id'=> $entity->getId())));		  
+		   return $this->redirect($this->generateUrl('campaign_edit', array('id'=> $entity->getId(), 'page' => $page)));		  
 		    
 	   } else {
             $this->get('session')->setFlash('result_action', 'error');
@@ -184,4 +198,26 @@ class CampanaController extends Controller
    
    }
    
+   
+   public function deleteAction($id, $page)
+   {
+	   $idOrganizacion = $this->get('session')->get('organizacion_id');
+	   $em = $this->getDoctrine()->getEntityManager();
+	   
+	   $entity = $em->getRepository('TipddyMasleadsBundle:Campanas')->findOneBy(array(
+	                                'id' => $id,
+	                                'organizacion' => $idOrganizacion
+	   ));
+	   
+	   if (!$entity) {
+		   throw $this->createNotFoundException("Unable to find register entity.");		   
+	   }
+	   
+	   $em->remove($entity);
+	   $em->flush();
+	   
+	   return $this->redirect($tthis->generateUrl('campaign', array('page' => $page)));
+	   
+	   
+   }
 }

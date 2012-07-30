@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<form action="{{ path('campaign_update', { 'id' : entity.id })}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+<form action="{{ path('campaign_update', { 'id' : entity.id, 'page' : page })}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
  <fieldset>
  <legend>Editando Campaña</legend> 
  <div class="field-group">
@@ -21,7 +21,7 @@
   {% include 'TipddyMasleadsBundle:Campaign:_form.html.twig' %}
  </fieldset>
  
-{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Actualizar', 'route':'campaign'} only %} 
+{% include 'TipddyMasleadsBundle::_botones-formulario.html.twig' with {'btn_action':'Actualizar', 'route':'campaign', 'page' : page} only %} 
 
 </form>
  

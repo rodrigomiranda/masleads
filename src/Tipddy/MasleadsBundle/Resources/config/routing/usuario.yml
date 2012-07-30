@@ -39,6 +39,6 @@ user_delete:
     pattern:  /{id}/delete/{page}
     defaults: { _controller: "TipddyMasleadsBundle:Usuario:delete", page: 1 }
     requirements:
-        _method: post
+        _method: get
         id: \d+
         page: \d+ 

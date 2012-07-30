@@ -92,7 +92,7 @@
       
       } 
       
-      public function editAction($id)
+      public function editAction($id, $page)
       {
          $em = $this->getDoctrine()->getEntityManager();
          
@@ -114,33 +114,71 @@
          return $this->render('TipddyMasleadsBundle:User:edit.html.twig', array(
                               'entity' => $entity,
                               'form'   => $editForm->createView(),
+                              'page'   => $page,
          ));
       
       }
       
-      public function showAction($id)
+      public function showAction($id, $page)
       {
          $em = $this->getDoctrine()->getEntityManager();
          $idOrganizacion = $this->get('session')->get('organizacion_id');
          
                  
-         $usuario = $em->getRepository('TipddyMasleadsBundle:Usuarios')->findOneBy(array(
+         $entity = $em->getRepository('TipddyMasleadsBundle:Usuarios')->findOneBy(array(
                                       'id' => $id,
                                       'organizacion' => $idOrganizacion        
                   ));
 	      
-	      if (!$usuario) {
+	      if (!$entity) {
 		      throw $this->createNotFoundException('Unable to find register');
 	      }
 	      
-	      $showForm = $this->createForm(new ,$);
+	      $showForm = $this->createForm(new UsuariosType(), $entity);
+	      
+	      return $this->render('TipddyMasleadsBundle:User:show.html.twig', array(
+	                           'entity' => $entity,
+	                           'form' => $showForm->createView(),
+	                           'page' => $page 
+	      ));
+	      
+      }
+            
+      
+      public function deleteAction($id, $page)
+      {
+	    
+	     $idOrganizacion = $this->get('session')->get('organizacion_id');
+		 $em = $this->getDoctrine()->getEntityManager();
+		 $entity = $em->getRepository('TipddyMasleadsBundle:Usuarios')->findOneBy(array(
+		                                   'id' => $id,
+		                                   'organizacion' => $idOrganizacion,
+		      ));
+		      
+		 if (!$entity) {
+		    throw $this->createNotFoundException('Unable to find register');
+		 }
+		      
+		 $em->remove($entity);
+		 $em->flush();
+	   
+	      
+	      return $this->redirect($this->generateUrl('user', array('page' => $page )));
 	      
 	      
       }
       
       
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder(array('id' => $id))
+            ->add('id', 'hidden')
+            ->getForm()
+        ;
+    }
       
-      public function updateAction($id)
+              
+      public function updateAction($id, $page)
       {
           $em = $this->getDoctrine()->getEntityManager();
           
@@ -179,7 +217,7 @@
              $em->flush();
              
              $this->get('session')->setFlash('result_action', 'ok_update');
-             return $this->redirect($this->generateUrl('user_edit', array('id' => $usuario->getId())));
+             return $this->redirect($this->generateUrl('user_edit', array('id' => $usuario->getId(), 'page' => $page)));
           }
           
           return $this->render('TipddyMasleadsBundle:User:edit.html.twig', array(

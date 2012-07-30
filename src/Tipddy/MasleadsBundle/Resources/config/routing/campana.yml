@@ -28,15 +28,18 @@ campaign_edit:
         id: \d+
 
 campaign_update:
-    pattern:  /{id}/update
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:update" }
+    pattern:  /{id}/update/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:update", page: 1 }
     requirements: 
         _method: post
         id: \d+ 
+        page: \d+
 
-campaign_borrar:
-    pattern:  /{id}/delete
-    defaults: { _controller: "TipddyMasleadsBundle:Campana:delete" }
-    requirements: { _method: post }
+campaign_delete:
+    pattern:  /{id}/delete/{page}
+    defaults: { _controller: "TipddyMasleadsBundle:Campana:delete", page: 1 }
+    requirements:
+        _method: post
+        page: \d+ 
 
   

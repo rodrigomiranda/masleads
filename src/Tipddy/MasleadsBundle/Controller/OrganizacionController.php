@@ -18,6 +18,7 @@
        public function indexAction($page)
        {
           $em = $this->getDoctrine()->getEntityManager();
+          
           $queryOrmAdapter = $em->getRepository('TipddyMasleadsBundle:Organizaciones')->buildQueryOrmAdapter();
           
           $adapter = new DoctrineOrmAdapter($queryOrmAdapter);

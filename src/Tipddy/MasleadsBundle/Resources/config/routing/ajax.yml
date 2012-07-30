@@ -1,6 +1,14 @@
 callajax_comunas:
     pattern: /comunas/{reg}
-    defaults: { _controller: TipddyMasleadsBundle:Ajax:comunas, reg:1}
+    defaults: { _controller: "TipddyMasleadsBundle:Ajax:comunas", reg:1}
     requirements:
         reg: \d+
-         
+        
+callajax_sendinf:
+    pattern: /sendinformation
+    defaults: { _controller: "TipddyMasleadsBundle:Ajax:sendinformation"}
+    
+callajax_sendcreate:
+    pattern: /sendinformation/create
+    defaults: { _controller:"TipddyMasleadsBundle:Ajax:createinformation" }
+    

@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/tipddymasleads/css/admin.css') }} " />
+{% endblock %}
+
+{% block body %}
+{% if app.session.hasFlash('result_action')  %} 
+   {% if app.session.getFlash('result_action') == 'ok' %}      
+      <span class="mensaje-exito"> {{ global.msj_action_ok_envio_comentario }}</span>
+   {% endif %} 
+{% endif %}
+
+
+<div id="envioinformacion">
+<form id="new-list" action="{{ path('callajax_sendcreate')}}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+ <fieldset>
+ <legend>Danos unos segundos... Escríbenos</legend> 
+   {{ form_row(form.tipoEnvioInformacion,{'label' : 'Asunto'}) }}
+   {{ form_row(form.informacion,{'label' : 'Descripción'}) }}
+   
+   {{ form_rest(form) }}
+ </fieldset>
+ 
+  
+{% include 'TipddyMasleadsBundle::_boton-enviar.html.twig' %}
+</form>
+</div>
+{% endblock %}
